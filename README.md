@@ -4,9 +4,9 @@ Site statique (HTML/CSS/JS, aucune dépendance) de l'agence My-Apps.
 **Agence** : `index`, `services`, `realisations`, `a-propos`, `contact`, `cgv`, `mentions-legales`, `confidentialite`, `maquette` (visionneuse ordinateur/tablette/mobile). Thème clair/sombre.
 
 **Maquettes** (sites complets et fonctionnels, dossiers `maquettes/<nom>/`) :
-- `chez-marthe` : carte filtrable, réservation avec créneaux, gestion des réservations
+- `le-tablier-bavard` : carte filtrable, réservation avec créneaux, gestion des réservations
 - `helene-voss` : galeries, visionneuse plein écran, estimateur de devis, demande de contact
-- `nord-athletique` : abonnements, inscription, planning avec places limitées, essai gratuit
+- `rouille-fonte` : abonnements, inscription, planning avec places limitées, essai gratuit
 - `oyat-mousse` : catalogue, recherche, fiches produit, panier, code promo `OYAT10`, commande
 
 **Visionneuse** (`maquette.html`) : l'ordinateur, la tablette (pivotable avec animation de rotation) et le téléphone s'affichent dans un cadre d'appareil ; le site s'y affiche à la vraie taille d'écran, donc en vrai responsive.
@@ -26,5 +26,5 @@ Mentions légales et CGV contiennent des champs `[à compléter]` (SIRET, adress
 Les photos des maquettes (`maquettes/*/img/`) proviennent d'[Unsplash](https://unsplash.com), utilisables gratuitement (licence Unsplash, attribution non obligatoire). Elles sont enregistrées dans le dépôt : aucun lien externe.
 
 ## Identité visuelle (My-Apps)
-Direction artistique « Atelier cobalt » : papier chaud / encre, bleu cobalt `#2147FF`, jaune signal `#FFC83D`, titres en *Instrument Serif*, étiquettes en *JetBrains Mono*, texte en *Inter*, ombres décalées.
+Direction artistique « Lagune » : une seule famille de teintes, bleu pétrole `#0B6E83` et turquoise `#3CC6DD`, fonds unis (clair `#FBFCFC` / sombre `#071418`), titres en *Bricolage Grotesque*, texte en *Inter*, gros arrondis et ombres douces.
 Logo : une grille d’applications, trois carrés cobalt et un rond jaune (l’application « à vous »). Fichiers dans `img/` : `logo.svg` (fond clair), `logo-dark.svg` (fond sombre), `logo-mark.svg`, `favicon.svg`, `logo.png`, `favicon-512.png`, `apple-touch-icon.png`.

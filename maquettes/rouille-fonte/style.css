@@ -16,7 +16,7 @@ nav a.l{color:var(--m);padding:6px 0;border-bottom:2px solid transparent}nav a.l
 .b.o{background:none;color:var(--w);border:1px solid #444}.b.o:hover{border-color:var(--y);color:var(--y)}
 .b:disabled{opacity:.35;cursor:not-allowed}
 .hero{padding:100px 0 80px;position:relative;overflow:hidden;background:linear-gradient(90deg,#0c0c0c 28%,rgba(12,12,12,.55) 62%,rgba(12,12,12,.2)),linear-gradient(0deg,#0c0c0c,transparent 30%),url(img/hero.jpg) 70% center/cover #0c0c0c}
-.hero::before{content:"NORD";position:absolute;right:-20px;top:20px;font:800 24rem/.8 'Barlow Condensed',sans-serif;color:rgba(255,255,255,.05)}
+.hero::before{content:"FONTE";position:absolute;right:-20px;top:20px;font:800 24rem/.8 'Barlow Condensed',sans-serif;color:rgba(255,255,255,.05)}
 .hero .w{position:relative;z-index:1}
 .hero h1{font-weight:800;font-size:clamp(3.4rem,10vw,8.5rem);line-height:.88;text-transform:uppercase;max-width:9ch}
 .hero h1 em{font-style:normal;color:var(--y)}

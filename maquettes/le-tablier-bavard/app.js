@@ -56,7 +56,7 @@ if(ard){
  ard.innerHTML=`<h3>${closed?'Réouverture mardi':jour}</h3>`+pl.map(([n,e,p])=>`<div class="plat"><div>${n}<em>${e}</em></div><span class="d"></span>${p} €</div>`).join('')+'<p style="text-align:center;margin-top:12px;color:#f4d98a">Formule midi : plat + dessert 19 €</p>'+(closed?'<p style="text-align:center;font-size:.85rem;opacity:.7">Nous sommes fermés le dimanche et le lundi.</p>':'');
 }
 /* stockage */
-const KEY='marthe_res';
+const KEY='tablier_res';
 const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}};
 const save=v=>{try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}};
 /* réservation */
