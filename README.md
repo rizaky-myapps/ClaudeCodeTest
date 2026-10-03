@@ -27,4 +27,4 @@ Les photos des maquettes (`maquettes/*/img/`) proviennent d'[Unsplash](https://u
 
 ## Identité visuelle (My-Apps)
 Direction artistique « Atelier cobalt » : papier chaud / encre, bleu cobalt `#2147FF`, jaune signal `#FFC83D`, titres en *Instrument Serif*, étiquettes en *JetBrains Mono*, texte en *Inter*, ombres décalées.
-Logo : une icône d'application (grille d’applications : trois carrés cobalt et un rond jaune, l’application « à vous ». Fichiers dans `img/` : `logo.svg` (fond clair), `logo-dark.svg` (fond sombre), `logo-mark.svg`, `favicon.svg`, `logo.png`, `favicon-512.png`, `apple-touch-icon.png`.
+Logo : une grille d’applications, trois carrés cobalt et un rond jaune (l’application « à vous »). Fichiers dans `img/` : `logo.svg` (fond clair), `logo-dark.svg` (fond sombre), `logo-mark.svg`, `favicon.svg`, `logo.png`, `favicon-512.png`, `apple-touch-icon.png`.
