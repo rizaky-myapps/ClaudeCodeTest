@@ -1,4 +1,4 @@
-/* Animations du site principal : transitions de page, héros, révélation, compteurs, inclinaison, boutons */
+/* Animations du site principal : transitions de page, héros, révélation, compteurs, boutons */
 (()=>{
  const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -66,16 +66,7 @@
  scan(document.body);
  /* contenu injecté (galerie) : même révélation */
  const g=$('#works'),h=$('#home-works');
- /* inclinaison 3D + lueur qui suit le curseur */
  if(fine){
-  const tilt=(el,max)=>{
-   el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
-    el.style.transform=`perspective(900px) rotateX(${(.5-y)*max}deg) rotateY(${(x-.5)*max}deg) translateY(-4px)`;el.style.setProperty('--mx',x*100+'%');el.style.setProperty('--my',y*100+'%')});
-   el.addEventListener('pointerleave',()=>{el.style.transform=''});
-  };
-  $$('.grid>.card').forEach(c=>{c.classList.add('glow');tilt(c,6)});
-  const bind=root=>$$('.work .thumb',root).forEach(t=>{if(!t.dataset.t){t.dataset.t=1;tilt(t,5)}});
-  [g,h].forEach(r=>{if(r){bind(r);new MutationObserver(()=>bind(r)).observe(r,{childList:true})}});
   /* boutons « magnétiques » */
   $$('.hero .btn,.btn.primary').forEach(b=>{if(b.closest('form,.menu'))return;
    b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.translate=`${(e.clientX-r.left-r.width/2)*.18}px ${(e.clientY-r.top-r.height/2)*.28}px`});

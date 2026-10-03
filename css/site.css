@@ -287,3 +287,114 @@ footer a{display:inline-block;transition:color .2s,transform .25s var(--ease)}fo
 @keyframes scr-off{to{filter:brightness(0)}}
 @keyframes scr-on{from{filter:brightness(0)}to{filter:none}}
 .dev.rot-out .home,.dev.rot-out .cam{opacity:0}
+
+/* =====================================================================
+   DIRECTION ARTISTIQUE « Atelier cobalt »
+   papier chaud · encre · bleu cobalt · jaune signal
+   titres en serif italique, étiquettes en mono, ombres décalées
+   ===================================================================== */
+:root{--bg:#F3F0E8;--bg2:#E9E4D8;--ink:#0F1115;--mut:#5C5951;--line:#D4CEBF;--edge:#0F1115;--a:#2147FF;--aink:#fff;--hi:#FFC83D;--r:6px;--fbg:#0F1115;--fink:#F1EEE6;--fmut:#A9A59B;
+ --serif:'Instrument Serif',Georgia,'Times New Roman',serif;--mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+:root[data-theme=dark]{--bg:#0B0D12;--bg2:#12151C;--ink:#EEEBE3;--mut:#9C9CA3;--line:#242836;--edge:#3A4152;--a:#8CA0FF;--aink:#0B0D12;--hi:#FFC83D;--fbg:#12151C;--fink:#EEEBE3;--fmut:#9C9CA3}
+::selection{background:var(--hi);color:#0F1115}
+body{font-size:17px}
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:.98}
+h1{font-size:clamp(3rem,8vw,6.4rem)}
+h2{font-size:clamp(2.4rem,5vw,4rem)}
+h3{font-family:var(--sans);font-weight:600;letter-spacing:-.01em;font-size:1.12rem;line-height:1.25}
+h1 em,h2 em{font-style:italic;color:var(--a)}
+.hero h1 em .wd>i{font-style:italic}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);font-weight:500}
+.eyebrow::before{width:9px;height:9px;background:var(--hi);border:1.5px solid var(--ink);animation:none}
+.lead{font-size:1.18rem;color:var(--mut)}
+/* navigation */
+.nav{background:color-mix(in srgb,var(--bg) 92%,transparent);border-bottom:1px solid var(--edge)}
+.logo svg{height:34px;width:auto;display:block}
+.logo .w{stroke:currentColor}
+.menu a{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--mut)}
+.menu a.btn{padding:10px 16px;font-size:.72rem}
+.menu a:not(.btn)::after{height:2px;background:var(--hi);bottom:2px}
+.theme,.icon{border:1.5px solid var(--edge);border-radius:999px}
+/* boutons */
+.btn{border:1.5px solid var(--edge);border-radius:999px;font-family:var(--mono);font-size:.76rem;letter-spacing:.07em;text-transform:uppercase;font-weight:500;padding:14px 24px}
+.btn:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.primary{background:var(--a);border-color:var(--a);color:var(--aink)}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bg);filter:none}
+.btn.primary::after,.btn.dark::after{content:"↗";margin-left:2px;display:inline-block;transition:transform .3s var(--ease)}
+.btn.primary:hover::after,.btn.dark:hover::after{transform:translate(2px,-2px)}
+.btn.dark{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.dark:hover{background:var(--a);border-color:var(--a);color:var(--aink)}
+.btn:hover{box-shadow:none}
+/* hero */
+.hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.55;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:72px 72px;background-position:-1px -1px;-webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 85%);mask-image:linear-gradient(180deg,#000 10%,transparent 85%)}
+.orb{display:none}
+.hero{padding:104px 0 96px}
+.hero-grid h1{font-size:clamp(3rem,6vw,5.6rem);max-width:none}
+.hero-pic .frame{border-radius:var(--r);border:1.5px solid var(--edge);box-shadow:14px 14px 0 var(--a);aspect-ratio:4/5}
+.hero-pic img{transform:none;animation:none}
+.hero-pic .chip{background:var(--hi);color:#0F1115;border:1.5px solid #0F1115;border-radius:6px;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;box-shadow:4px 4px 0 #0F1115;font-weight:500}
+.hero-pic .chip i{background:#0F1115;box-shadow:none}
+.hero .stats b,.stats b{font-family:var(--serif);font-weight:400;font-size:3rem;letter-spacing:-.02em;line-height:1}
+.hero .stats b{font-size:2.8rem}
+.stats{border-top:1.5px solid var(--edge)}
+.stats span{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+/* sections */
+section{padding:100px 0}
+section.alt{background:var(--bg2);border-block:1.5px solid var(--edge)}
+.sec-head h2{margin-bottom:18px}
+.sec-head p{font-size:1.1rem}
+.page-head{padding:96px 0 44px}
+/* cartes : ombre décalée au survol */
+.card{background:var(--bg);border:1.5px solid var(--edge);border-radius:var(--r);box-shadow:0 0 0 var(--a);transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
+section.alt .card{background:var(--bg)}
+.card:hover{transform:translate(-4px,-4px);box-shadow:6px 6px 0 var(--a);border-color:var(--edge)}
+.card.hl{border-color:var(--a);box-shadow:6px 6px 0 var(--a)}
+.card.hl:hover{transform:translate(-4px,-4px);box-shadow:10px 10px 0 var(--a)}
+.card .pic{border-bottom:1.5px solid var(--edge);border-radius:4px 4px 0 0;margin:-28px -28px 22px}
+.card .num{font-family:var(--mono);font-size:.78rem;color:var(--ink);background:var(--hi);display:inline-block;padding:2px 10px;border-radius:99px;border:1.5px solid var(--ink);margin-bottom:22px}
+.card:hover .num{transform:none}
+.ico{background:var(--hi);color:#0F1115;border:1.5px solid #0F1115;border-radius:8px}
+.card:hover .ico{background:var(--hi);color:#0F1115;transform:rotate(-6deg) scale(1.06)}
+.price{font-family:var(--serif);font-weight:400;font-size:3rem;letter-spacing:-.02em}
+.price small{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em}
+.price small.pre{font-family:var(--mono);font-size:.68rem;margin-bottom:6px}
+.check li::before{border-color:var(--a)}
+/* réalisations */
+.thumb{border:1.5px solid var(--edge);border-radius:var(--r);box-shadow:0 0 0 var(--a);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.work:hover .thumb{transform:translate(-5px,-5px);box-shadow:8px 8px 0 var(--a)}
+.work .cat{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.work .tags span{font-family:var(--mono);font-size:.64rem;letter-spacing:.04em;text-transform:uppercase;border:1.5px solid var(--edge);color:var(--ink)}
+.work:hover .tags span{background:var(--hi);color:#0F1115;border-color:#0F1115}
+.filters button{border:1.5px solid var(--edge);font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.filters button.on{background:var(--a);border-color:var(--a);color:var(--aink)}
+/* images */
+.photo,.banner,.side-pic{border:1.5px solid var(--edge);border-radius:var(--r)}
+.photo:hover{box-shadow:8px 8px 0 var(--a);transform:translate(-4px,-4px)}
+.photo{transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+/* formulaires */
+.f input,.f textarea,.f select{border:1.5px solid var(--edge);border-radius:4px;background:var(--bg)}
+.f label{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.f .chk{font-family:var(--sans);text-transform:none;letter-spacing:0;font-size:.9rem}
+.f input:focus,.f textarea:focus,.f select:focus{box-shadow:4px 4px 0 var(--a);transform:none;outline:none;border-color:var(--ink)}
+.notice{border:1.5px solid var(--edge);border-radius:var(--r)}
+.faq details{border-bottom:1.5px solid var(--edge)}
+.faq summary{font-family:var(--serif);font-size:1.5rem;font-weight:400}
+.faq summary::after{color:var(--a)}
+.info dt{font-family:var(--mono);letter-spacing:.08em}
+.legal h2{font-family:var(--serif);font-size:2rem}
+/* pied de page : bloc encre */
+footer{background:var(--fbg);color:var(--fink);border-top:0;padding:80px 0 36px}
+footer h4{font-family:var(--mono);color:var(--hi);letter-spacing:.12em}
+footer a,footer p,.copy{color:var(--fmut)}
+footer a:hover{color:var(--fink)}
+.copy{border-top-color:#2c303b;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase}
+footer .logo svg{height:40px}
+/* visionneuse */
+.vbar{border-bottom:1.5px solid var(--edge)}
+.devs{border:1.5px solid var(--edge);border-radius:999px;padding:3px;background:var(--bg)}
+.devs button{border-radius:999px;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.devs button.on{background:var(--a);color:var(--aink);box-shadow:none}
+.vtitle{font-family:var(--serif);font-size:1.4rem;font-weight:400}
+@media(max-width:900px){.hero-pic .frame{box-shadow:8px 8px 0 var(--a)}.hero{padding:64px 0 56px}}
+@media(max-width:560px){h1{font-size:clamp(2.6rem,12vw,3.4rem)}.hero .stats b{font-size:2rem}}
+section.alt .ico,section .ico{background:var(--hi);color:#0F1115}
