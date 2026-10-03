@@ -100,3 +100,7 @@ footer .c{margin-top:26px;padding-top:18px;border-top:1px solid #3a2a20;text-ali
 ::-webkit-scrollbar-thumb:hover{background:var(--gold);background-clip:padding-box}
 ::-webkit-scrollbar-corner{background:var(--cream2)}
 @supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:var(--wine) var(--cream2)}}
+
+/* boutons : espacement quand ils passent à la ligne */
+.hero .btn,.page-h .btn,.cols .btn,.split .btn{margin:0 10px 12px 0}
+.btn{text-align:center}

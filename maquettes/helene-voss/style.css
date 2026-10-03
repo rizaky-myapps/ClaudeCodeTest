@@ -82,3 +82,4 @@ footer a:hover{color:var(--ink)}footer .c{max-width:1280px;margin:30px auto 0;te
 ::-webkit-scrollbar-thumb:hover{background:var(--acc);background-clip:padding-box}
 ::-webkit-scrollbar-corner{background:#0f0f0e}
 @supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:#3a3a36 #0f0f0e}}
+

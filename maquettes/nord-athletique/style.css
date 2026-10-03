@@ -94,3 +94,8 @@ footer{padding:44px 0 28px;color:var(--m);font-size:.88rem;border-top:1px solid 
 .split .fm,.split .msg,.split .recap{max-width:none}
 .essai{background:linear-gradient(90deg,var(--y) 40%,rgba(215,255,30,.88)),url(img/cordes.jpg) center/cover}
 @media(max-width:900px){.split{grid-template-columns:1fr;gap:28px}.split>figure{position:static;aspect-ratio:16/9;order:-1}}
+
+/* boutons : espacement quand ils passent à la ligne */
+.hero .b,.essai .b,.w>p>.b{margin:0 14px 14px 0}
+.hero .b:last-of-type{margin-right:0}
+@media(max-width:560px){.hero .b{display:block;width:fit-content;margin:0 0 14px}}

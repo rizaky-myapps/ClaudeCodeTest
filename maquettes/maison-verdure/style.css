@@ -91,3 +91,10 @@ footer .c{max-width:1200px;margin:30px auto 0;padding-top:18px;border-top:1px so
 ::-webkit-scrollbar-thumb:hover{background:var(--g);background-clip:padding-box}
 ::-webkit-scrollbar-corner{background:var(--bg)}
 @supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:#9fb38a var(--bg)}}
+
+/* boutons : espacement quand ils passent à la ligne */
+.hero .btn,.conseil .btn,.bar .btn{margin:0 10px 12px 0}
+.lay{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.lay>*,.prod>*{min-width:0}
+@media(max-width:900px){.lay,.prod{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:480px){.line{grid-template-columns:70px minmax(0,1fr);gap:12px}.box{padding:20px}.promo{flex-wrap:wrap}}
