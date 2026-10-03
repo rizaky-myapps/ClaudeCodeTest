@@ -12,6 +12,12 @@ Site statique (HTML/CSS/JS, aucune dépendance) de l'agence My-Apps.
 **Visionneuse** (`maquette.html`) : l'ordinateur, la tablette (pivotable avec animation de rotation) et le téléphone s'affichent dans un cadre d'appareil ; le site s'y affiche à la vraie taille d'écran, donc en vrai responsive.
 
 **Animations** des maquettes : `maquettes/fx.css` + `maquettes/fx.js` (fondu entre pages, apparition au défilement, ondulation et retour au clic, défilement doux). Désactivées si l'utilisateur demande « réduire les animations ».
+- `le-carnet-egare` : blog (articles filtrables, recherche, commentaires, « j'aime », lettre d'information)
+- `orbelune-wiki` : wiki (sommaire, infobox, modification en ligne, historique et restauration)
+- `comptoir-des-curieux` : forum (catégories, sujets, réponses, citations, membres)
+- `pilotis-admin` : panneau d'administration (graphiques, utilisateurs, paramètres, journal)
+- `tribord-gestion` : comptabilité (factures avec TVA, clients, salariés, bulletins de paie)
+- `cendrelune-serveur` : serveur de jeu (statut en direct, classement, boutique, règlement)
 
 Les données des maquettes sont stockées dans le navigateur (localStorage) : rien n'est envoyé.
 

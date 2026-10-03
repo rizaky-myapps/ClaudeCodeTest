@@ -2,7 +2,13 @@ const MAQUETTES=[
  {slug:'le-tablier-bavard',nom:'Le Tablier Bavard',cat:'Restaurant',desc:'Bistrot lyonnais : carte filtrable, réservation en ligne avec créneaux et gestion de vos réservations.',tags:['Réservation','Carte','Horaires en direct']},
  {slug:'helene-voss',nom:'Hélène Voss',cat:'Photographe',desc:'Portfolio avec galeries filtrables et visionneuse plein écran, estimateur de devis et formulaire de contact.',tags:['Galerie','Lightbox','Devis']},
  {slug:'rouille-fonte',nom:'Rouille & Fonte',cat:'Salle de sport',desc:'Abonnements, planning des cours avec places limitées, réservation de séance et inscription.',tags:['Planning','Réservation','Inscription']},
- {slug:'oyat-mousse',nom:'Oyat & Mousse',cat:'Boutique en ligne',desc:'Catalogue, recherche, fiches produit, panier, code promo et tunnel de commande complet.',tags:['Panier','Fiches produit','Commande']}
+ {slug:'oyat-mousse',nom:'Oyat & Mousse',cat:'Boutique en ligne',desc:'Catalogue, recherche, fiches produit, panier, code promo et tunnel de commande complet.',tags:['Panier','Fiches produit','Commande']},
+ {slug:'le-carnet-egare',nom:'Le Carnet Égaré',cat:'Blog',desc:'Blog de voyage : articles filtrables, recherche, commentaires, « j\'aime » et inscription à la lettre.',tags:['Articles','Commentaires','Newsletter']},
+ {slug:'orbelune-wiki',nom:'Orbelune Wiki',cat:'Wiki',desc:'Encyclopédie collaborative : sommaire, infobox, modification en ligne avec historique et restauration.',tags:['Édition','Historique','Recherche']},
+ {slug:'comptoir-des-curieux',nom:'Le Comptoir des Curieux',cat:'Forum',desc:'Forum de discussion : catégories, sujets, réponses, citations, « j\'aime » et profils de membres.',tags:['Sujets','Réponses','Membres']},
+ {slug:'pilotis-admin',nom:'Pilotis Admin',cat:'Administration',desc:'Panneau d\'administration : tableau de bord avec graphiques, gestion des utilisateurs, paramètres et journal.',tags:['Graphiques','Utilisateurs','Export CSV']},
+ {slug:'tribord-gestion',nom:'Tribord Gestion',cat:'Comptabilité & paie',desc:'Factures avec TVA, clients, salariés et bulletins de paie imprimables.',tags:['Factures','Paie','Export']},
+ {slug:'cendrelune-serveur',nom:'Cendrelune',cat:'Jeu vidéo',desc:'Site de serveur de jeu : statut en direct, classement des joueurs, boutique de grades et règlement.',tags:['Statut en direct','Classement','Boutique']}
 ];
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const root=document.documentElement;
