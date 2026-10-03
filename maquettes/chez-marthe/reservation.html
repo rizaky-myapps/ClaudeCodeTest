@@ -1,0 +1,16 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Réserver – Chez Marthe, bouchon lyonnais</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Lora:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
+<header><div class="w"><a class="brand" href="index.html">Chez Marthe</a><button class="burger" aria-label="Menu">☰</button><nav><a href="index.html">Accueil</a><a href="carte.html">La carte</a><a href="contact.html">Infos & contact</a><a class="r cur" href="reservation.html">Réserver</a></nav></div></header>
+
+<div class="page-h"><div class="w"><h1>Réserver une table</h1><p>Choisissez une date, un horaire et le nombre de convives. Confirmation immédiate.</p></div></div>
+<section><div class="w"><div class="cols"><div>
+<div id="ticket" hidden></div>
+<form class="fm card" id="resa" novalidate>
+<label>Date<input type="date" name="date"><span class="err" data-e="date"></span></label>
+<div><div style="font-size:.9rem;font-weight:500;margin-bottom:8px">Horaire</div><div class="slots" id="slots"></div><div id="slotinfo" style="font-size:.9rem;opacity:.8"></div><span class="err" data-e="slot" style="color:#b3261e;font-size:.82rem"></span></div>
+<div class="g2"><label>Personnes<select name="pers"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label><label>Nom<input name="nom" autocomplete="name"><span class="err" data-e="nom"></span></label></div>
+<div class="g2"><label>Téléphone<input name="tel" type="tel" autocomplete="tel" placeholder="06 12 34 56 78"><span class="err" data-e="tel"></span></label><label>E-mail<input name="email" type="email" autocomplete="email"><span class="err" data-e="email"></span></label></div>
+<label>Remarque (allergie, anniversaire…)<textarea name="note" rows="3"></textarea></label>
+<button class="btn w2">Confirmer la réservation</button></form></div>
+<div><h2 style="font-size:1.5rem">Mes réservations</h2><p class="lead" style="font-size:.9rem">Enregistrées uniquement sur cet appareil.</p><div id="mine"></div><p style="font-size:.88rem;opacity:.75;margin-top:20px">Groupes de plus de 8 personnes : écrivez-nous depuis la page <a href="contact.html" style="text-decoration:underline">contact</a>.</p></div></div></div></section>
+<footer><div class="w"><div class="fg"><div><h4>Chez Marthe</h4><p>Bouchon lyonnais depuis 1987.<br>14 rue des Capucins, 69001 Lyon<br>04 78 00 00 00</p></div><div><h4>Le restaurant</h4><p><a href="carte.html">La carte</a><br><a href="reservation.html">Réserver</a><br><a href="contact.html">Infos &amp; contact</a></p></div><div><h4>Légal</h4><p><a href="mentions-legales.html">Mentions légales</a></p><p style="margin-top:8px"><span class="open-badge" id="open"></span></p></div></div><div class="c">Maquette fictive réalisée par <a href="../../index.html" target="_top" style="text-decoration:underline">My-Apps</a> · Aucune réservation réelle n'est enregistrée.</div></div></footer>
+<script src="app.js"></script></body></html>

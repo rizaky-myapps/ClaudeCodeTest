@@ -1,0 +1,16 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tarifs – Hélène Voss, photographe à Bordeaux</title><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
+<header><a class="logo" href="index.html">Hélène Voss</a><button class="burger" aria-label="Menu">☰</button><nav><a href="index.html">Accueil</a><a href="galeries.html">Galeries</a><a href="tarifs.html" class=cur>Tarifs</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav></header>
+<div class="ph-head"><h1>Tarifs</h1><p>Des formules claires, et un estimateur pour composer votre séance.</p></div>
+<section style="padding-top:30px"><div class="packs">
+<div class="pack"><h3>Portrait</h3><div class="pr">à partir de 180 €</div><ul><li>1 h de séance, extérieur ou domicile</li><li>20 photos retouchées</li><li>Galerie privée en ligne</li></ul></div>
+<div class="pack"><h3>Mariage</h3><div class="pr">à partir de 1 200 €</div><ul><li>Demi-journée de reportage</li><li>300 photos environ</li><li>Livraison sous 4 semaines</li></ul></div>
+<div class="pack"><h3>Professionnel</h3><div class="pr">à partir de 350 €</div><ul><li>Portraits d'équipe, produits, atelier</li><li>Droits d'usage web inclus</li><li>Livraison sous 7 jours</li></ul></div></div>
+<form class="est fm" id="est" onsubmit="return false"><div class="fm">
+<label>Type de prestation<select name="type"><option value="portrait">Portrait</option><option value="mariage">Mariage</option><option value="pro">Professionnel</option></select></label>
+<p id="unit" style="color:var(--mut);font-size:.9rem;margin-top:-8px"></p>
+<label>Heures supplémentaires<input type="number" name="extra" min="0" max="8" value="0"></label>
+<div id="opts" class="fm" style="gap:10px"></div>
+<label>Distance depuis Bordeaux (km aller)<input type="number" name="km" min="0" max="500" value="0"></label></div>
+<aside class="total"><p>Estimation indicative</p><div class="sum" id="tot"></div><dl id="lines"></dl><a class="btn" id="goto" href="contact.html">Demander ce devis</a><p style="margin-top:14px;font-size:.8rem">TVA non applicable, art. 293 B du CGI. Devis définitif sous 48 h.</p></aside></form></section>
+<footer><div class="fg"><span>Hélène Voss · Photographe · Bordeaux &amp; Sud-Ouest<br>bonjour@helenevoss.fr · 06 00 00 00 00</span><span><a href="mentions-legales.html">Mentions légales</a> · <a href="contact.html">Contact</a></span></div><div class="c">Maquette fictive réalisée par <a href="../../index.html" target="_top" style="text-decoration:underline">My-Apps</a></div></footer>
+<script src="app.js"></script></body></html>
