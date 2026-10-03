@@ -9,6 +9,10 @@ Site statique (HTML/CSS/JS, aucune dépendance) de l'agence My-Apps.
 - `nord-athletique` : abonnements, inscription, planning avec places limitées, essai gratuit
 - `maison-verdure` : catalogue, recherche, fiches produit, panier, code promo `VERDURE10`, commande
 
+**Visionneuse** (`maquette.html`) : l'ordinateur, la tablette (pivotable) et le téléphone s'affichent dans un cadre d'appareil ; le site s'y affiche à la vraie taille d'écran, donc en vrai responsive.
+
+**Animations** des maquettes : `maquettes/fx.css` + `maquettes/fx.js` (fondu entre pages, apparition au défilement, ondulation et retour au clic, défilement doux). Désactivées si l'utilisateur demande « réduire les animations ».
+
 Les données des maquettes sont stockées dans le navigateur (localStorage) : rien n'est envoyé.
 
 ## Déploiement (GitHub Pages)

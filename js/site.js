@@ -41,15 +41,33 @@ if(form){
   location.href='mailto:contact@my-apps.fr?subject='+encodeURIComponent('Projet web – '+d.get('nom'))+'&body='+encodeURIComponent(body);
  };
 }
-/* visionneuse */
+/* visionneuse : appareils (ordinateur, tablette, téléphone) */
 const frame=$('#frame');
 if(frame){
  const p=new URLSearchParams(location.search).get('m');
  const i=Math.max(0,MAQUETTES.findIndex(m=>m.slug===p)),m=MAQUETTES[i];
  document.title=m.nom+' – Maquette | My-Apps';
  $('#vt').innerHTML=`${m.nom}<small>${m.cat}</small>`;
+ $('#url').textContent=m.slug+'.fr';
  frame.src=`maquettes/${m.slug}/index.html`;
  $('#full').href=frame.src;
  $('#next').href='maquette.html?m='+MAQUETTES[(i+1)%MAQUETTES.length].slug;
- $('#devs').onclick=e=>{if(e.target.tagName!=='BUTTON')return;$$('button',e.currentTarget).forEach(b=>b.classList.remove('on'));e.target.classList.add('on');frame.style.width=e.target.dataset.w};
+ /* taille de l'écran (px CSS) et épaisseur de la bordure de chaque appareil */
+ const DEV={desktop:{w:1280,h:800,pad:0,top:38},tablet:{w:820,h:1180,pad:16,top:0},mobile:{w:390,h:844,pad:13,top:46}};
+ const dev=$('#dev'),fit=$('#fit'),stage=$('#stage'),rot=$('#rot');
+ let mode='desktop',land=false;
+ function layout(){
+  const d=DEV[mode],sw=land&&mode!=='desktop'?d.h:d.w,sh=land&&mode!=='desktop'?d.w:d.h;
+  const top=mode==='mobile'&&land?0:d.top;const W=sw+d.pad*2,H=sh+d.pad*2+top;
+  const cs=getComputedStyle(stage),aw=stage.clientWidth-parseFloat(cs.paddingLeft)*2,ah=stage.clientHeight-parseFloat(cs.paddingTop)*2;
+  const s=Math.min(1,aw/W,ah/H);
+  dev.style.width=W+'px';dev.style.height=H+'px';dev.style.transform=`scale(${s})`;
+  fit.style.width=W*s+'px';fit.style.height=H*s+'px';
+  dev.dataset.m=mode;dev.dataset.o=land?'l':'p';
+  rot.classList.toggle('show',mode!=='desktop');rot.classList.toggle('on',land);
+ }
+ $('#devs').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('button',e.currentTarget).forEach(x=>x.classList.remove('on'));b.classList.add('on');mode=b.dataset.m;land=false;layout()};
+ rot.onclick=()=>{land=!land;layout()};
+ addEventListener('resize',layout);
+ dev.style.transition='none';layout();requestAnimationFrame(()=>requestAnimationFrame(()=>dev.style.transition=''));
 }

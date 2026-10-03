@@ -81,5 +81,5 @@ footer .c{margin-top:26px;padding-top:18px;border-top:1px solid #3a2a20;text-ali
  .burger{display:block}
  header nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--wine);flex-direction:column;align-items:flex-start;padding:10px 24px 24px;gap:14px}
  header nav.open{display:flex}
- .cols,.fm .g2,footer .fg{grid-template-columns:1fr}.hero::after{opacity:.25;width:100%;clip-path:none}.ardoise{padding:20px}.gal{grid-template-columns:1fr 1fr}
+ .cols,.fm .g2,footer .fg{grid-template-columns:1fr}.hero{padding-bottom:120px}.hero::after{inset:auto 0 0 0;top:auto;height:56px;width:100%;clip-path:none;right:0}.ardoise{padding:20px}.gal{grid-template-columns:1fr 1fr}
 }

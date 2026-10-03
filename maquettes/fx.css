@@ -1,0 +1,33 @@
+/* Animations partagées par les maquettes (entrée de page, scroll, clics) */
+:root{--fx-ease:cubic-bezier(.22,.8,.3,1);--fx-ripple:rgba(255,255,255,.45)}
+html{scroll-behavior:smooth}
+body{animation:fx-page .6s var(--fx-ease) both}
+body.fx-out{animation:fx-leave .28s ease-in forwards;pointer-events:none}
+@keyframes fx-page{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes fx-leave{to{opacity:0;transform:translateY(-14px)}}
+/* révélation au défilement */
+.fx-r{opacity:0;transform:translateY(28px);transition:opacity .7s var(--fx-ease),transform .7s var(--fx-ease);transition-delay:var(--fx-d,0s)}
+.fx-r.in{opacity:1;transform:none}
+/* boutons : retour au clic + survol */
+a,button,.btn,.b{transition-property:transform,filter,background-color,color,border-color,box-shadow,opacity;transition-duration:.2s;transition-timing-function:var(--fx-ease)}
+button:not(:disabled):active,a.btn:active,a.b:active,.btn:active,.b:active{transform:scale(.95)}
+.b:active{transform:skewX(-8deg) scale(.95)}
+.btn:hover,.b:hover,.add:hover{transform:translateY(-2px)}
+.b:hover{transform:skewX(-8deg) translateY(-2px)}
+.fx-rip{position:relative;overflow:hidden}
+.fx-rip>.fx-wave{position:absolute;border-radius:50%;background:currentColor;opacity:.3;pointer-events:none;transform:scale(0);animation:fx-wave .6s ease-out forwards}
+@keyframes fx-wave{to{transform:scale(1);opacity:0}}
+/* éléments qui apparaissent : confirmations, tickets, messages */
+.msg,.ticket,.ok-box,#ok:not([hidden]),#done:not(:empty),#cok:not([hidden]),.recap{animation:fx-pop .55s var(--fx-ease) both}
+@keyframes fx-pop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+/* menu mobile */
+header nav.open,.menu.open{animation:fx-drop .35s var(--fx-ease) both}
+@keyframes fx-drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+/* pastilles / compteurs */
+.bump{animation:fx-bump .45s var(--fx-ease)}
+@keyframes fx-bump{40%{transform:scale(1.5)}}
+#toast{transition:transform .45s var(--fx-ease)}
+/* champs */
+input,select,textarea{transition:border-color .2s,box-shadow .2s,outline-color .2s}
+details>*:not(summary){animation:fx-pop .35s var(--fx-ease)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.fx-r{opacity:1;transform:none}}

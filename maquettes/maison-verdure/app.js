@@ -30,7 +30,7 @@ function svg(x){
 /* ---------- panier ---------- */
 const cart=()=>ld('verdure_cart',[]);
 function setCart(c){sv('verdure_cart',c);badge()}
-function badge(){const n=cart().reduce((a,x)=>a+x.q,0);$$('.cart i').forEach(e=>e.textContent=n)}
+let lastN=null;function badge(){const n=cart().reduce((a,x)=>a+x.q,0);$$('.cart i').forEach(e=>{e.textContent=n;if(lastN!==null&&n!==lastN){e.classList.remove('bump');void e.offsetWidth;e.classList.add('bump')}});lastN=n}
 function toast(m){let t=$('#toast');if(!t){t=document.createElement('div');t.id='toast';document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t.h);t.h=setTimeout(()=>t.classList.remove('on'),2000)}
 function add(id,q=1){const x=find(id),c=cart(),l=c.find(i=>i.id===id),have=l?l.q:0;
  if(have+q>x.st){toast(x.st?`Stock limité : ${x.st} disponible(s)`:'Produit indisponible');return false}
