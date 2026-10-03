@@ -146,3 +146,102 @@ footer p{color:var(--mut);font-size:.94rem;max-width:300px;margin-top:12px}
  .g2,.g3,.g4{grid-template-columns:1fr}.hero{padding:70px 0 50px}section{padding:60px 0}.stats{grid-template-columns:1fr 1fr}.f .row2{grid-template-columns:1fr}
  .fgrid{grid-template-columns:1fr}.vbar{padding:8px 12px}.vtitle small{display:none}
 }
+
+/* barres de défilement */
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--mut) 55%,transparent);border-radius:99px;border:3px solid var(--bg);background-clip:padding-box;transition:background .2s}
+::-webkit-scrollbar-thumb:hover{background:var(--a);background-clip:padding-box}
+::-webkit-scrollbar-corner{background:var(--bg)}
+@supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--mut) 55%,transparent) var(--bg)}}
+
+/* ===== animations du site principal ===== */
+:root{--ease:cubic-bezier(.22,.8,.3,1)}
+body{animation:pg-in .7s var(--ease) both}
+body.pg-out{animation:pg-out .28s ease-in forwards;pointer-events:none}
+.viewer{animation:none}
+@keyframes pg-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes pg-out{to{opacity:0;transform:translateY(-12px)}}
+#prog{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--a);transform:scaleX(0);transform-origin:0 50%;z-index:60;pointer-events:none}
+.nav{transition:box-shadow .3s,background .3s,height .3s}
+.nav.scrolled{box-shadow:0 10px 30px -18px rgba(0,0,0,.5)}
+.nav .wrap{transition:height .3s var(--ease)}.nav.scrolled .wrap{height:58px}
+.logo b{transition:transform .5s var(--ease),border-radius .5s var(--ease)}
+.logo:hover b{transform:rotate(90deg) scale(1.1);border-radius:50%}
+.menu a:not(.btn){position:relative;background:none!important}
+.menu a:not(.btn)::after{content:"";position:absolute;left:12px;right:12px;bottom:3px;height:2px;background:var(--a);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--ease)}
+.menu a:not(.btn):hover::after,.menu a[aria-current]:not(.btn)::after{transform:scaleX(1)}
+.menu.open{animation:drop .35s var(--ease) both}
+@keyframes drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.theme svg{transition:transform .6s var(--ease)}.theme:hover svg{transform:rotate(25deg) scale(1.1)}
+.theme.spin svg{animation:spin .6s var(--ease)}@keyframes spin{from{transform:rotate(-180deg) scale(.4)}to{transform:none}}
+/* boutons */
+.btn{position:relative;overflow:hidden;transition:transform .25s var(--ease),background .2s,color .2s,border-color .2s,box-shadow .25s,filter .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px -12px rgba(0,0,0,.45)}
+.btn:active{transform:scale(.96)}
+.btn.primary:hover{box-shadow:0 14px 28px -10px color-mix(in srgb,var(--a) 70%,transparent)}
+.btn .wave{position:absolute;border-radius:50%;background:currentColor;opacity:.28;pointer-events:none;transform:scale(0);animation:wave .6s ease-out forwards}
+@keyframes wave{to{transform:scale(1);opacity:0}}
+.btn.arrow::after,.btn.dark::after{content:""}
+/* hero */
+.hero{position:relative;overflow:hidden}
+.hero>.wrap{position:relative;z-index:1}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.28;pointer-events:none;will-change:transform}
+.orb.o1{width:420px;height:420px;background:var(--a);right:-80px;top:-60px;animation:float1 14s ease-in-out infinite alternate}
+.orb.o2{width:320px;height:320px;background:#6c8cff;right:18%;bottom:-120px;opacity:.16;animation:float2 17s ease-in-out infinite alternate}
+:root[data-theme=dark] .orb.o2{opacity:.12}
+@keyframes float1{to{transform:translate(-60px,50px) scale(1.15)}}
+@keyframes float2{to{transform:translate(70px,-40px) scale(.9)}}
+.hero h1 .wd{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em}
+.hero h1 .wd>i{display:inline-block;font-style:normal;transform:translateY(110%);animation:wd .9s var(--ease) forwards;animation-delay:calc(.08s*var(--i) + .15s)}
+@keyframes wd{to{transform:none}}
+.hero .eyebrow,.hero .lead,.hero .cta,.hero .stats{opacity:0;transform:translateY(18px);animation:up .8s var(--ease) forwards}
+.hero .eyebrow{animation-delay:.05s}.hero .lead{animation-delay:.55s}.hero .cta{animation-delay:.7s}.hero .stats{animation-delay:.85s}
+@keyframes up{to{opacity:1;transform:none}}
+.eyebrow{position:relative;display:inline-flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:0;height:2px;background:var(--a);animation:line .8s .3s var(--ease) forwards}
+@keyframes line{to{width:28px}}
+/* marquee */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:18px 0;background:var(--bg)}
+.marquee .track{display:flex;width:max-content;animation:marq 38s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.marquee span{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;padding:0 28px;white-space:nowrap;color:var(--mut)}
+.marquee span:nth-child(even){color:var(--a)}
+@keyframes marq{to{transform:translateX(-50%)}}
+/* révélation au scroll */
+.rv{opacity:0;transform:translateY(34px) scale(.985);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.rv.rv-in{opacity:1;transform:none}
+.rv.l{transform:translateX(-40px)}.rv.r{transform:translateX(40px)}
+.rv.l.rv-in,.rv.r.rv-in{transform:none}
+/* cartes : inclinaison et lueur */
+.card{transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;transform-style:preserve-3d;will-change:transform;position:relative}
+.card:hover{border-color:color-mix(in srgb,var(--a) 55%,var(--line));box-shadow:0 22px 40px -26px rgba(0,0,0,.5)}
+.card .ico{transition:transform .5s var(--ease),background .3s,color .3s}
+.card:hover .ico{transform:rotate(-8deg) scale(1.12);background:var(--a);color:var(--aink)}
+.card .num{transition:transform .4s var(--ease)}.card:hover .num{transform:translateX(6px)}
+.card.glow::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--a) 14%,transparent),transparent 60%)}
+.card.glow:hover::before{opacity:1}
+.work .thumb{transition:transform .35s var(--ease),box-shadow .35s}
+.work .thumb iframe{transition:transform .8s var(--ease)}
+.work h3{transition:color .25s}.work:hover h3{color:var(--a)}
+.work .meta{transition:transform .35s var(--ease)}.work:hover .meta{transform:translateX(4px)}
+.work .tags span{transition:background .25s,color .25s,border-color .25s}.work:hover .tags span{border-color:var(--a);color:var(--ink)}
+.filters button{transition:background .25s,color .25s,border-color .25s,transform .2s var(--ease)}.filters button:hover{transform:translateY(-2px)}
+.filters button:active{transform:scale(.94)}
+#works .work,#home-works .work{animation:card-in .6s var(--ease) both}
+@keyframes card-in{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.price{transition:transform .3s var(--ease)}.card:hover .price{transform:scale(1.04);transform-origin:0 50%}
+.check li::before{transition:transform .3s var(--ease)}.card:hover .check li::before{transform:rotate(-45deg) scale(1.2)}
+.stats b{font-variant-numeric:tabular-nums}
+/* FAQ & formulaires */
+.faq summary{transition:color .25s}.faq summary:hover{color:var(--a)}
+.faq summary::after{transition:transform .35s var(--ease)}.faq details[open] summary::after{transform:rotate(180deg)}
+.faq details[open]>p{animation:up .45s var(--ease) both}
+.f input,.f textarea,.f select{transition:border-color .25s,box-shadow .25s,transform .25s var(--ease)}
+.f input:focus,.f textarea:focus,.f select:focus{box-shadow:0 0 0 4px color-mix(in srgb,var(--a) 20%,transparent);transform:translateY(-1px)}
+.notice{animation:up .6s var(--ease) both}
+.f .err:not(:empty){animation:shake .4s var(--ease)}
+@keyframes shake{25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+footer a{display:inline-block;transition:color .2s,transform .25s var(--ease)}footer a:hover{transform:translateX(4px)}
+@media (hover:none){.card{will-change:auto}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}.hero h1 .wd>i{transform:none}.hero .eyebrow,.hero .lead,.hero .cta,.hero .stats{opacity:1;transform:none}.marquee .track{animation:none}}

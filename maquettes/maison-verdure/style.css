@@ -83,3 +83,11 @@ footer .c{max-width:1200px;margin:30px auto 0;padding-top:18px;border-top:1px so
 #toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,90px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:99px;transition:.3s;font-size:.9rem;z-index:60;white-space:nowrap}#toast.on{transform:translate(-50%,0)}
 @media(max-width:900px){.lay,.prod{grid-template-columns:1fr}.box{position:static}footer .fg{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.logo{font-size:1.45rem}header{padding:14px 18px}.burger{display:block;order:3}header nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;padding:10px 24px 20px;border-bottom:1px solid var(--line);gap:12px}header nav.open{display:flex}.hero{grid-template-columns:1fr;padding:30px 20px}main,.wrap{padding:44px 20px}.conseil{padding:50px 20px}.fm .g2{grid-template-columns:1fr}.line{grid-template-columns:70px 1fr}.line>:last-child{grid-column:2}.line .th{width:70px}footer{padding:40px 20px 20px}footer .fg{grid-template-columns:1fr}}
+
+/* barres de défilement */
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#9fb38a;border-radius:99px;border:3px solid var(--bg);background-clip:padding-box;transition:background .2s}
+::-webkit-scrollbar-thumb:hover{background:var(--g);background-clip:padding-box}
+::-webkit-scrollbar-corner{background:var(--bg)}
+@supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:#9fb38a var(--bg)}}

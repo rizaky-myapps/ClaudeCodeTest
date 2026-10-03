@@ -71,3 +71,11 @@ footer a:hover{color:var(--ink)}footer .c{max-width:1280px;margin:30px auto 0;te
 }
 @media(max-width:480px){.mason{columns:1}}
 .est.fm{gap:40px}
+
+/* barres de défilement */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#0f0f0e}
+::-webkit-scrollbar-thumb{background:#3a3a36;border-radius:0;border:3px solid #0f0f0e;background-clip:padding-box;transition:background .2s}
+::-webkit-scrollbar-thumb:hover{background:var(--acc);background-clip:padding-box}
+::-webkit-scrollbar-corner{background:#0f0f0e}
+@supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:#3a3a36 #0f0f0e}}
