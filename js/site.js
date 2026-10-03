@@ -6,6 +6,11 @@ const MAQUETTES=[
 ];
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const root=document.documentElement;
+/* thème : suit le réglage du système tant que le visiteur n'a pas choisi lui-même */
+const mq=matchMedia('(prefers-color-scheme:dark)');
+const userTheme=()=>{try{return localStorage.getItem('theme')}catch(e){return null}};
+if(!root.dataset.theme)root.dataset.theme=userTheme()||(mq.matches?'dark':'light');
+(mq.addEventListener?mq.addEventListener.bind(mq,'change'):mq.addListener.bind(mq))(e=>{if(!userTheme())root.dataset.theme=e.matches?'dark':'light'});
 $$('.theme').forEach(b=>b.onclick=()=>{
  const t=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=t;
  try{localStorage.setItem('theme',t)}catch(e){}
@@ -55,32 +60,41 @@ if(frame){
  /* taille de l'écran (px CSS) et épaisseur de la bordure de chaque appareil */
  const DEV={desktop:{w:1280,h:800,pad:0,top:38},tablet:{w:820,h:1180,pad:16,top:0},mobile:{w:390,h:844,pad:13,top:0}};
  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
- const dev=$('#dev'),fit=$('#fit'),stage=$('#stage'),rot=$('#rot');
- let mode='desktop',land=false;
- function layout(){
-  const cs=getComputedStyle(stage),aw=stage.clientWidth-parseFloat(cs.paddingLeft)*2,ah=stage.clientHeight-parseFloat(cs.paddingTop)*2;
-  const d=DEV[mode],o=land&&mode!=='desktop';
-  /* ordinateur : l'écran occupe toute la zone disponible (largeur 1100–1700 px) */
+ const dev=$('#dev'),fit=$('#fit'),stage=$('#stage'),rot=$('#rot'),scr=$('#frame');
+ let mode='desktop',land=false,busy=false;
+ const area=()=>{const cs=getComputedStyle(stage);return{aw:stage.clientWidth-parseFloat(cs.paddingLeft)*2,ah:stage.clientHeight-parseFloat(cs.paddingTop)*2}};
+ /* dimensions de l'appareil pour une orientation donnée */
+ function dims(m,l){
+  const {aw,ah}=area(),d=DEV[m],o=l&&m!=='desktop';
   let sw=o?d.h:d.w,sh=o?d.w:d.h;
-  if(mode==='desktop'){sw=clamp(aw,1100,1700);sh=Math.max(560,Math.round((ah-d.top)*Math.max(1,sw/aw)))}
-  const top=mode==='mobile'&&land?0:d.top;const W=sw+d.pad*2,H=sh+d.pad*2+top;
-  const s=Math.min(1,aw/W,ah/H);
-  dev.style.width=W+'px';dev.style.height=H+'px';dev.style.transform=`scale(${s})`;
+  if(m==='desktop'){sw=clamp(aw,1100,1700);sh=Math.max(560,Math.round((ah-d.top)*Math.max(1,sw/aw)))}
+  const top=m==='mobile'&&l?0:d.top,W=sw+d.pad*2,H=sh+d.pad*2+top;
+  return{W,H,s:Math.min(1,aw/W,ah/H)};
+ }
+ function layout(){
+  const {W,H,s}=dims(mode,land);
+  dev.style.width=W+'px';dev.style.height=H+'px';dev.style.transform=`translate(-50%,-50%) scale(${s})`;
   fit.style.width=W*s+'px';fit.style.height=H*s+'px';
   dev.dataset.m=mode;dev.dataset.o=land?'l':'p';
   rot.classList.toggle('show',mode!=='desktop');rot.classList.toggle('on',land);
  }
- /* la barre d'état prend la couleur du haut du site affiché */
- frame.addEventListener('load',()=>{
-  try{
-   const d=frame.contentDocument,w=frame.contentWindow,pick=el=>{if(!el)return null;const m=w.getComputedStyle(el).backgroundColor.match(/[\d.]+/g);return m&&(m.length<4||+m[3]>=.95)?m.slice(0,3).map(Number):null};
-   const rgb=pick(d.querySelector('.top'))||pick(d.querySelector('header'))||pick(d.body)||[255,255,255];
-   const lum=(.299*rgb[0]+.587*rgb[1]+.114*rgb[2])/255;
-   dev.style.setProperty('--st-bg',`rgb(${rgb.join(',')})`);dev.style.setProperty('--st-fg',lum>.55?'#111':'#fff');
-  }catch(e){}
- });
- $('#devs').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('button',e.currentTarget).forEach(x=>x.classList.remove('on'));b.classList.add('on');mode=b.dataset.m;land=false;layout()};
- rot.onclick=()=>{land=!land;layout()};
+ $('#devs').onclick=e=>{const b=e.target.closest('button');if(!b||busy)return;$$('button',e.currentTarget).forEach(x=>x.classList.remove('on'));b.classList.add('on');mode=b.dataset.m;land=false;layout()};
+ /* rotation : l'appareil pivote physiquement, l'écran s'éteint, se redessine dans la nouvelle orientation puis se rallume */
+ rot.onclick=()=>{
+  if(busy||mode==='desktop')return;busy=true;
+  const to=dims(mode,!land),dir=land?90:-90;
+  rot.classList.toggle('on',!land);
+  dev.classList.add('rot-out');
+  fit.style.width=to.W*to.s+'px';fit.style.height=to.H*to.s+'px';
+  dev.style.transform=`translate(-50%,-50%) scale(${to.s}) rotate(${dir}deg)`;
+  setTimeout(()=>{
+   dev.style.transition='none';fit.style.transition='none';
+   land=!land;layout();void dev.offsetWidth;
+   dev.classList.remove('rot-out');dev.classList.add('rot-in');
+   dev.style.transition='';fit.style.transition='';
+   setTimeout(()=>{dev.classList.remove('rot-in');busy=false},480);
+  },720);
+ };
  addEventListener('resize',layout);
  dev.style.transition='none';layout();requestAnimationFrame(()=>requestAnimationFrame(()=>dev.style.transition=''));
 }

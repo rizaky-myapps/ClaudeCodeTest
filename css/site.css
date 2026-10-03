@@ -116,7 +116,7 @@ footer p{color:var(--mut);font-size:.94rem;max-width:300px;margin-top:12px}
 .vact{display:flex;gap:8px;align-items:center}
 .stage{flex:1;display:flex;justify-content:center;align-items:center;overflow:hidden;padding:10px;background:var(--bg2);background-image:radial-gradient(color-mix(in srgb,var(--ink) 9%,transparent) 1px,transparent 1px);background-size:22px 22px;min-height:0}
 .fit{position:relative;flex:none;transition:width .55s cubic-bezier(.22,.8,.3,1),height .55s cubic-bezier(.22,.8,.3,1)}
-.dev{position:absolute;left:0;top:0;transform-origin:0 0;display:flex;flex-direction:column;background:#111;overflow:hidden;box-shadow:0 30px 70px -25px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.25);transition:width .55s cubic-bezier(.22,.8,.3,1),height .55s cubic-bezier(.22,.8,.3,1),transform .55s cubic-bezier(.22,.8,.3,1),padding .55s cubic-bezier(.22,.8,.3,1),border-radius .55s cubic-bezier(.22,.8,.3,1)}
+.dev{position:absolute;left:50%;top:50%;transform-origin:50% 50%;display:flex;flex-direction:column;background:#111;overflow:hidden;box-shadow:0 30px 70px -25px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.25);transition:width .55s cubic-bezier(.22,.8,.3,1),height .55s cubic-bezier(.22,.8,.3,1),transform .55s cubic-bezier(.22,.8,.3,1),padding .55s cubic-bezier(.22,.8,.3,1),border-radius .55s cubic-bezier(.22,.8,.3,1)}
 .dev iframe{flex:1;width:100%;min-height:0;border:0;background:#fff;transition:border-radius .55s cubic-bezier(.22,.8,.3,1)}
 .chrome{height:38px;flex:none;display:flex;align-items:center;gap:7px;padding:0 14px;background:#e9e7e2;overflow:hidden;transition:height .55s cubic-bezier(.22,.8,.3,1),padding .55s}
 .chrome i{width:11px;height:11px;border-radius:50%;background:#c9c6bf;flex:none}
@@ -277,3 +277,13 @@ footer a{display:inline-block;transition:color .2s,transform .25s var(--ease)}fo
 .price small.pre{display:block;font-size:.82rem;font-weight:500;letter-spacing:0;margin:0 0 2px}
 .price{font-size:2.2rem}
 @media(max-width:560px){.hero-grid .stats{grid-template-columns:1fr 1fr 1fr}.hero .stats b{font-size:1.5rem}.hero .stats span{font-size:.78rem}}
+
+/* rotation de l'appareil */
+.dev{transition:width .55s var(--ease),height .55s var(--ease),transform .55s var(--ease),padding .55s var(--ease),border-radius .55s var(--ease),background .4s}
+.dev.rot-out{transition:transform .72s cubic-bezier(.65,.05,.25,1)}
+.fit{transition:width .72s cubic-bezier(.65,.05,.25,1),height .72s cubic-bezier(.65,.05,.25,1)}
+.dev.rot-out iframe{animation:scr-off .3s .4s ease-in forwards}
+.dev.rot-in iframe{animation:scr-on .48s ease-out both}
+@keyframes scr-off{to{filter:brightness(0)}}
+@keyframes scr-on{from{filter:brightness(0)}to{filter:none}}
+.dev.rot-out .home,.dev.rot-out .cam{opacity:0}

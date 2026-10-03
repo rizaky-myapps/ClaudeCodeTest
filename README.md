@@ -9,7 +9,7 @@ Site statique (HTML/CSS/JS, aucune dépendance) de l'agence My-Apps.
 - `nord-athletique` : abonnements, inscription, planning avec places limitées, essai gratuit
 - `oyat-mousse` : catalogue, recherche, fiches produit, panier, code promo `OYAT10`, commande
 
-**Visionneuse** (`maquette.html`) : l'ordinateur, la tablette (pivotable) et le téléphone s'affichent dans un cadre d'appareil ; le site s'y affiche à la vraie taille d'écran, donc en vrai responsive.
+**Visionneuse** (`maquette.html`) : l'ordinateur, la tablette (pivotable avec animation de rotation) et le téléphone s'affichent dans un cadre d'appareil ; le site s'y affiche à la vraie taille d'écran, donc en vrai responsive.
 
 **Animations** des maquettes : `maquettes/fx.css` + `maquettes/fx.js` (fondu entre pages, apparition au défilement, ondulation et retour au clic, défilement doux). Désactivées si l'utilisateur demande « réduire les animations ».
 
