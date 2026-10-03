@@ -398,3 +398,16 @@ footer .logo svg{height:40px}
 @media(max-width:900px){.hero-pic .frame{box-shadow:8px 8px 0 var(--a)}.hero{padding:64px 0 56px}}
 @media(max-width:560px){h1{font-size:clamp(2.6rem,12vw,3.4rem)}.hero .stats b{font-size:2rem}}
 section.alt .ico,section .ico{background:var(--hi);color:#0F1115}
+
+/* pied de page et bandeau final : clairs en mode clair */
+:root{--fbg:var(--bg2);--fink:var(--ink);--fmut:var(--mut)}
+:root[data-theme=dark]{--fbg:var(--bg2);--fink:var(--ink);--fmut:var(--mut)}
+footer{border-top:1.5px solid var(--edge)}
+footer h4{color:var(--a)}
+.copy{border-top-color:var(--line)}
+.cta-img{background:linear-gradient(rgba(33,71,255,.93),rgba(33,71,255,.93)),url(img/cta.jpg) center/cover;color:#fff}
+.cta-img h2 em{color:var(--hi)}
+.cta-img .lead{color:rgba(255,255,255,.88)}
+.cta-img .btn.primary{background:var(--hi);border-color:var(--hi);color:#0F1115}
+.cta-img .btn.primary:hover{background:#fff;border-color:#fff;color:#0F1115}
+footer .logo{color:var(--ink)}
