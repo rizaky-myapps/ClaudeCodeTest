@@ -1,4 +1,5 @@
-# My-Apps – my-apps.fr
-Site statique (HTML/CSS/JS) de l'agence : présentation, galerie de maquettes (`maquette.html?m=<slug>` avec aperçu ordinateur/tablette/mobile) et contact.
-- Ajouter une maquette : créer `maquettes/<slug>.html` puis l'ajouter à `MAQUETTES` dans `js/main.js`.
-- Déploiement : GitHub Pages (fichier `CNAME` = my-apps.fr). Côté DNS : enregistrements A vers 185.199.108.153 / .109.153 / .110.153 / .111.153, et CNAME `www` vers `<compte>.github.io`.
+# My-Apps
+Site statique (HTML/CSS/JS) de l'agence : présentation, galerie de maquettes avec visionneuse (`maquette.html?m=<slug>` : ordinateur / tablette / mobile), thème clair/sombre et contact.
+
+- Ajouter une maquette : créer `maquettes/<slug>.html` (page autonome) puis l'ajouter à `MAQUETTES` dans `js/main.js`.
+- Déploiement : GitHub Pages sur le domaine par défaut (`https://<compte>.github.io/<dépôt>/`). Tous les chemins sont relatifs.

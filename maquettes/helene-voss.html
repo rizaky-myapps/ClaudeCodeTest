@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hélène Voss – Photographe, Bordeaux</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f0f0e;--ink:#ecebe6;--mut:#8b8a83;--line:#2a2a27}
+*{box-sizing:border-box;margin:0}
+body{font-family:Jost,sans-serif;font-weight:300;background:var(--bg);color:var(--ink);line-height:1.7}
+a{color:inherit;text-decoration:none}
+header{position:fixed;inset:0 0 auto 0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:26px 44px;mix-blend-mode:difference;color:#fff}
+header b{font:500 1.5rem 'Cormorant Garamond',serif;letter-spacing:.08em}
+header nav a{margin-left:34px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase}
+.hero{height:100vh;min-height:560px;position:relative;display:flex;align-items:flex-end;padding:44px;background:
+ radial-gradient(60% 70% at 70% 30%,#e9b97a 0,transparent 55%),radial-gradient(50% 60% at 20% 80%,#3b4a5c 0,transparent 60%),linear-gradient(160deg,#1c2430,#0f0f0e)}
+.hero::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");mix-blend-mode:overlay}
+.hero h1{position:relative;font:italic 400 clamp(3rem,9vw,8rem)/.95 'Cormorant Garamond',serif;max-width:10ch}
+.hero p{position:absolute;right:44px;bottom:50px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:#d8d4c8}
+section{padding:110px 44px;max-width:1280px;margin:auto}
+h2{font:italic 400 3rem 'Cormorant Garamond',serif;margin-bottom:40px}
+.serie{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.ph{position:relative;overflow:hidden;min-height:260px}
+.ph span{position:absolute;left:14px;bottom:12px;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.p1{grid-column:span 7;min-height:460px;background:radial-gradient(circle at 70% 40%,#f2c58b,#b4623a 40%,#2a1b22 80%)}
+.p2{grid-column:span 5;min-height:460px;background:linear-gradient(180deg,#cfd6dc 0,#8a98a4 45%,#2d3a46)}
+.p3{grid-column:span 4;background:radial-gradient(circle at 30% 60%,#e7e0d0,#a89c82 50%,#3a342a)}
+.p4{grid-column:span 4;background:linear-gradient(135deg,#46604a,#1b2a1e 70%)}
+.p5{grid-column:span 4;background:radial-gradient(circle at 50% 30%,#fff3dc,#d49a74 45%,#4a2c28)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;border-top:1px solid var(--line)}
+.about .portrait{aspect-ratio:4/5;background:radial-gradient(circle at 50% 35%,#c9a583 0,#6d5442 35%,#1c1613 75%);border-radius:200px 200px 4px 4px}
+.about p{color:#c9c6bb;margin-bottom:16px;font-size:1.05rem}
+.tarifs{border-top:1px solid var(--line)}
+.t{display:grid;grid-template-columns:1fr auto;gap:8px 30px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.t h3{font:500 1.8rem 'Cormorant Garamond',serif}.t b{font:400 1.6rem 'Cormorant Garamond',serif}
+.t p{color:var(--mut);grid-column:1/-1;max-width:560px;font-size:.95rem}
+.contact{text-align:center;border-top:1px solid var(--line)}
+.contact a.m{font:italic 400 clamp(1.8rem,5vw,3.6rem) 'Cormorant Garamond',serif;border-bottom:1px solid var(--mut)}
+.contact p{color:var(--mut);margin:26px 0 0;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase}
+footer{text-align:center;padding:30px;color:var(--mut);font-size:.78rem;letter-spacing:.12em;border-top:1px solid var(--line)}
+@media(max-width:760px){header{padding:20px}header nav a{margin-left:16px}section{padding:70px 20px}.hero{padding:24px}.hero p{display:none}.p1,.p2,.p3,.p4,.p5{grid-column:span 12;min-height:260px}.about{grid-template-columns:1fr;gap:34px}}
+</style></head><body>
+<header><b>Hélène Voss</b><nav><a href="#series">Séries</a><a href="#apropos">À propos</a><a href="#tarifs">Tarifs</a><a href="#contact">Contact</a></nav></header>
+<div class="hero"><h1>La lumière avant tout.</h1><p>Photographe · Bordeaux & Sud-Ouest</p></div>
+<section id="series"><h2>Séries récentes</h2><div class="serie">
+ <div class="ph p1"><span>Mariage à Saint-Émilion · 2025</span></div>
+ <div class="ph p2"><span>Dune du Pilat, brume · 2025</span></div>
+ <div class="ph p3"><span>Portrait de Camille</span></div>
+ <div class="ph p4"><span>Forêt des Landes</span></div>
+ <div class="ph p5"><span>Lumière de fin d'été</span></div>
+</div></section>
+<section class="about" id="apropos"><div class="portrait"></div><div>
+ <h2>Je photographie ce qu'on ne met pas en scène.</h2>
+ <p>Depuis douze ans, j'accompagne des couples, des familles et des artisans devant et derrière l'objectif. Mon travail est discret, à la lumière naturelle, sans poses forcées.</p>
+ <p>Diplômée de l'École nationale supérieure de la photographie d'Arles, j'ai exposé à Bordeaux, Lisbonne et Paris.</p></div></section>
+<section class="tarifs" id="tarifs"><h2>Tarifs</h2>
+ <div class="t"><h3>Portrait</h3><b>180 €</b><p>1 h de séance en extérieur ou à domicile, 20 photos retouchées en galerie privée.</p></div>
+ <div class="t"><h3>Mariage – demi-journée</h3><b>1 200 €</b><p>Préparatifs, cérémonie et vin d'honneur. 300 photos environ, livrées sous 4 semaines.</p></div>
+ <div class="t"><h3>Mariage – journée complète</h3><b>2 100 €</b><p>De la préparation à l'ouverture de bal, avec un album papier de 30 pages.</p></div>
+ <div class="t"><h3>Professionnel</h3><b>sur devis</b><p>Portraits d'équipe, reportage d'atelier, photos de produits pour votre site.</p></div></section>
+<section class="contact" id="contact"><a class="m" href="mailto:bonjour@helenevoss.fr">bonjour@helenevoss.fr</a><p>06 00 00 00 00 · Réponse sous 48 h</p></section>
+<footer>© Hélène Voss · Maquette fictive réalisée par My-Apps</footer>
+</body></html>
