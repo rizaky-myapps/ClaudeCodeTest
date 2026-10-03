@@ -69,3 +69,4 @@ footer{padding:40px 0;color:var(--mut);font-size:.85rem}
 .cols>*,.g2>*,.kpis>*,.card{min-width:0}
 td:last-child>*+*{margin-left:6px}
 @media(max-width:760px){.kpis.k3{grid-template-columns:1fr}}
+.fm>*{min-width:0}
