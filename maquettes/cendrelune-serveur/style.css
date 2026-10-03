@@ -83,3 +83,5 @@ footer{border-top:2px solid var(--line);padding:36px 0 50px;color:var(--mut);fon
 @supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:var(--line) var(--bg)}}
 [hidden]{display:none!important}
 #lb table{min-width:620px}.cmp{min-width:520px}
+.tabs{flex-wrap:wrap}
+@media(max-width:900px){.burger{display:block}header nav{display:none;position:absolute;top:68px;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--line);flex-direction:column;align-items:flex-start;padding:12px 22px 18px}header nav.open{display:flex}}

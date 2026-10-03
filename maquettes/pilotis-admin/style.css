@@ -74,3 +74,6 @@ tr:hover td{background:color-mix(in srgb,var(--asoft) 50%,transparent)}
 @supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:var(--line) var(--bg)}}
 [hidden]{display:none!important}
 #utab table{min-width:700px}
+.g2>*,.g3>*,.kpis>*{min-width:0}
+td .btn+.btn{margin-left:6px}
+.tb{min-width:0}

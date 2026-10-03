@@ -64,3 +64,8 @@ footer{padding:40px 0;color:var(--mut);font-size:.85rem}
 @supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:#C4D1CD var(--bg)}}
 [hidden]{display:none!important}
 #flist table{min-width:760px}#emps table{min-width:720px}#clients table{min-width:560px}.inv{overflow-x:auto}.inv table{min-width:520px}.inv .tot{min-width:260px}
+.chips{flex-wrap:wrap}
+.kpis.k3{grid-template-columns:repeat(3,1fr)}
+.cols>*,.g2>*,.kpis>*,.card{min-width:0}
+td:last-child>*+*{margin-left:6px}
+@media(max-width:760px){.kpis.k3{grid-template-columns:1fr}}
