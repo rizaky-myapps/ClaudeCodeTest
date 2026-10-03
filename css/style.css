@@ -1,0 +1,53 @@
+:root{--bg:#0b0d14;--card:#141826;--line:#252b3f;--txt:#e8eaf3;--mut:#9aa3bd;--a:#7c5cff;--b:#22d3ee;--r:16px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header.nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(11,13,20,.8);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;font-size:1.25rem}.logo span{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;color:transparent}
+.nav nav{display:flex;gap:24px;align-items:center}.nav nav a{color:var(--mut);font-size:.95rem}.nav nav a:hover{color:var(--txt)}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:600;border:1px solid var(--line);cursor:pointer;background:transparent;color:var(--txt);font-size:1rem;transition:.2s}
+.btn.primary{background:linear-gradient(90deg,var(--a),var(--b));border:0;color:#fff}
+.btn:hover{transform:translateY(-2px)}
+.hero{padding:96px 0 72px;text-align:center;background:radial-gradient(60% 50% at 50% 0,rgba(124,92,255,.25),transparent)}
+.badge{display:inline-block;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-size:.85rem;margin-bottom:20px}
+h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.1;margin-bottom:20px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;color:transparent}
+.hero p{color:var(--mut);max-width:620px;margin:0 auto 32px;font-size:1.15rem}
+.hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.stats{display:flex;gap:40px;justify-content:center;margin-top:56px;flex-wrap:wrap}
+.stats b{display:block;font-size:2rem}.stats span{color:var(--mut);font-size:.9rem}
+section{padding:80px 0}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:12px}
+.sub{color:var(--mut);margin-bottom:40px;max-width:600px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.card h3{margin-bottom:8px}.card p{color:var(--mut);font-size:.95rem}
+.ico{font-size:1.8rem;margin-bottom:12px}
+.step{counter-increment:s}.step::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:linear-gradient(90deg,var(--a),var(--b));font-weight:700;margin-bottom:12px}
+.steps{counter-reset:s}
+.mock{overflow:hidden;padding:0;display:flex;flex-direction:column}
+.thumb{height:190px;position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:#fff}
+.thumb iframe{width:1100px;height:800px;border:0;transform:scale(.235);transform-origin:0 0;pointer-events:none}
+.mock .body{padding:20px}
+.tag{font-size:.75rem;color:var(--b);text-transform:uppercase;letter-spacing:.08em}
+.mock .row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}.mock .btn{white-space:nowrap}
+.mock .btn{padding:8px 16px;font-size:.9rem}
+.filters{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.filters button.on{background:var(--a);border-color:var(--a)}
+form{display:grid;gap:14px;max-width:560px}
+input,textarea,select{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--txt);font:inherit}
+input:focus,textarea:focus{outline:2px solid var(--a)}
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--mut);text-align:center;font-size:.9rem}
+/* viewer */
+.viewer{display:flex;flex-direction:column;height:100vh}
+.vbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 20px;border-bottom:1px solid var(--line);background:var(--card);flex-wrap:wrap}
+.vbar .devs{display:flex;gap:6px}
+.vbar .devs button.on{background:var(--a);border-color:var(--a)}
+.vbar .btn{padding:8px 14px;font-size:.9rem}
+.stage{flex:1;display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:20px;background:#05060a}
+.stage iframe{border:0;background:#fff;width:100%;height:100%;border-radius:10px;transition:width .3s;max-width:100%}
+.vtitle{font-weight:700}.vtitle small{color:var(--mut);font-weight:400;margin-left:8px}
+@media(max-width:720px){.nav nav a.h{display:none}.hero{padding-top:60px}}
