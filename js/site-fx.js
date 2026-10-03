@@ -50,7 +50,7 @@
  counters.forEach(c=>c.b.textContent='0'+c.rest);
  setTimeout(()=>counters.forEach(count),1000);
  /* révélation au défilement */
- const SEL='section .sec-head,.page-head>.wrap>*,.grid>.card,.grid>.work,.list>*,.faq details,.row2,.f>*,.contact-grid>*,.legal>*,.marquee,footer .fgrid>*,section>.wrap>p,section>.wrap>.btn,.filters';
+ const SEL='section .sec-head,.page-head>.wrap>*,.grid>.card,.grid>.work,.list>*,.faq details,.row2,.f>*,.contact-grid>*,.legal>*,footer .fgrid>*,section>.wrap>p,section>.wrap>.btn,.filters';
  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){const el=en.target;el.classList.add('rv-in');io.unobserve(el);setTimeout(()=>{el.classList.remove('rv','rv-in','l','r');el.style.removeProperty('--d')},1300)}}),{threshold:.1,rootMargin:'0px 0px -5% 0px'});
  const seen=new WeakSet();
  function scan(root){

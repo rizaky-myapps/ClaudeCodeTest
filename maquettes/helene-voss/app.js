@@ -1,24 +1,32 @@
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const bg=$('.burger');if(bg)bg.onclick=()=>$('nav').classList.toggle('open');
 const PH=[
- {t:'Mariage à Saint-Émilion',c:'Mariage',ar:'3/2',g:'radial-gradient(circle at 70% 35%,#f2c58b,#b4623a 40%,#2a1b22 85%)',o:'linear-gradient(0deg,rgba(0,0,0,.45),transparent 40%)'},
- {t:'Dune du Pilat, brume',c:'Paysage',ar:'3/2',g:'linear-gradient(180deg,#cfd6dc 0,#8a98a4 45%,#c9a97a 46%,#6b5239)',o:'radial-gradient(ellipse at 50% 100%,rgba(0,0,0,.4),transparent 70%)'},
- {t:'Portrait de Camille',c:'Portrait',ar:'4/5',g:'radial-gradient(circle at 50% 38%,#d9b595 0,#9c7458 22%,#3b2a22 55%,#14100e)',o:'linear-gradient(0deg,rgba(0,0,0,.5),transparent 50%)'},
- {t:'Forêt des Landes',c:'Paysage',ar:'4/5',g:'linear-gradient(170deg,#6f8a6a,#2c4630 55%,#101a13)',o:'repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 6px,transparent 6px 40px)'},
- {t:'Lumière de fin d\'été',c:'Portrait',ar:'1/1',g:'radial-gradient(circle at 50% 30%,#fff3dc,#d49a74 45%,#4a2c28)',o:'linear-gradient(0deg,rgba(0,0,0,.35),transparent 50%)'},
- {t:'Les mains de Louise',c:'Mariage',ar:'1/1',g:'radial-gradient(circle at 30% 60%,#e7e0d0,#a89c82 50%,#3a342a)',o:'linear-gradient(180deg,rgba(0,0,0,.25),transparent 40%)'},
- {t:'Bassin d\'Arcachon, 6 h',c:'Paysage',ar:'3/2',g:'linear-gradient(180deg,#f4b693 0,#e08a7c 30%,#5a6b87 55%,#27364d)',o:'linear-gradient(0deg,rgba(0,0,0,.4),transparent 45%)'},
- {t:'Atelier du tonnelier',c:'Reportage',ar:'4/5',g:'radial-gradient(circle at 60% 40%,#d8a35f,#7b4a24 45%,#1d130c)',o:'linear-gradient(90deg,rgba(0,0,0,.4),transparent 60%)'},
- {t:'Cérémonie laïque',c:'Mariage',ar:'3/2',g:'linear-gradient(180deg,#e9eef0,#aab8bd 50%,#57655f)',o:'radial-gradient(circle at 50% 55%,rgba(255,255,255,.25),transparent 50%)'},
- {t:'Boulangerie Dupin',c:'Reportage',ar:'3/2',g:'radial-gradient(circle at 40% 50%,#f1d9a8,#b5803f 45%,#33210f)',o:'linear-gradient(0deg,rgba(0,0,0,.4),transparent 50%)'},
- {t:'Autoportrait, miroir',c:'Portrait',ar:'4/5',g:'linear-gradient(135deg,#2c3340,#10131a 60%,#4a3a2a)',o:'radial-gradient(circle at 70% 25%,rgba(255,220,170,.35),transparent 40%)'},
- {t:'Vignes en octobre',c:'Paysage',ar:'3/2',g:'linear-gradient(180deg,#e7c27a 0,#c4783a 40%,#6e2f1f 60%,#2b1510)',o:'repeating-linear-gradient(100deg,rgba(0,0,0,.15) 0 4px,transparent 4px 30px)'}
+ {t:'Mer de nuages, Alpes',c:'Paysage',src:'img/brume.jpg',w:1400,h:933},
+ {t:'Le bouquet, Saint-Émilion',c:'Mariage',src:'img/bouquet.jpg',w:1200,h:800},
+ {t:'Portrait de Camille',c:'Portrait',src:'img/portrait-1.jpg',w:1000,h:1500},
+ {t:'Lac de Braies',c:'Paysage',src:'img/lac.jpg',w:1400,h:933},
+ {t:'Lâcher de ballons',c:'Mariage',src:'img/ballons.jpg',w:1400,h:935},
+ {t:'Portrait en bord de lac',c:'Portrait',src:'img/portrait-3.jpg',w:1000,h:667},
+ {t:'Café-atelier, Bordeaux',c:'Reportage',src:'img/cafe.jpg',w:1400,h:1050},
+ {t:'Sentier en forêt',c:'Paysage',src:'img/foret.jpg',w:1400,h:932},
+ {t:'Les alliances',c:'Mariage',src:'img/alliances.jpg',w:1200,h:801},
+ {t:'Portrait de Marc',c:'Portrait',src:'img/portrait-2.jpg',w:1000,h:1500},
+ {t:'Brume sur les collines',c:'Paysage',src:'img/collines.jpg',w:1400,h:834},
+ {t:'Entraînement en plein air',c:'Reportage',src:'img/cordes.jpg',w:1200,h:802},
+ {t:'Lumière de fin d\'été',c:'Portrait',src:'img/portrait-5.jpg',w:1000,h:1498},
+ {t:'Prairie au coucher du soleil',c:'Paysage',src:'img/prairie.jpg',w:1400,h:934},
+ {t:'La tablée',c:'Reportage',src:'img/tablee.jpg',w:1200,h:800},
+ {t:'Portrait de Thomas',c:'Portrait',src:'img/portrait-4.jpg',w:1000,h:1500},
+ {t:'Vallée alpine',c:'Paysage',src:'img/alpes.jpg',w:1400,h:933},
+ {t:'Le cuisinier',c:'Reportage',src:'img/cuisinier.jpg',w:1200,h:1800},
+ {t:'Plage au lever du jour',c:'Paysage',src:'img/plage.jpg',w:1400,h:931},
+ {t:'La crête',c:'Paysage',src:'img/crete.jpg',w:1400,h:930}
 ];
 const mason=$('#mason');let cur=[],idx=0;
-function open(i){idx=i;const p=cur[i],lb=$('#lb');lb.classList.add('on');const b=$('.big',lb);b.style.setProperty('--g',p.g);b.style.setProperty('--o',p.o);b.style.setProperty('--ar',p.ar);$('#cap').textContent=`${p.t} — ${p.c}  (${i+1}/${cur.length})`;document.body.style.overflow='hidden'}
+function open(i){idx=i;const p=cur[i],lb=$('#lb');lb.classList.add('on');const im=$('img',lb);im.classList.remove('sw');void im.offsetWidth;im.src=p.src;im.alt=p.t;im.classList.add('sw');$('#cap').textContent=`${p.t} — ${p.c}  (${i+1}/${cur.length})`;document.body.style.overflow='hidden'}
 function close(){$('#lb').classList.remove('on');document.body.style.overflow=''}
 const step=d=>open((idx+d+cur.length)%cur.length);
-function tile(p,i){return `<button class="ph" data-i="${i}" aria-label="Agrandir : ${p.t}"><div class="im" style="--g:${p.g};--o:${p.o};aspect-ratio:${p.ar}"></div><span>${p.t}</span></button>`}
+function tile(p,i){return `<button class="ph" data-i="${i}" aria-label="Agrandir : ${p.t}"><div class="im"><img src="${p.src}" width="${p.w}" height="${p.h}" alt="${p.t}" loading="lazy"></div><span>${p.t}</span></button>`}
 function draw(c,limit){cur=PH.filter(p=>c==='Toutes'||p.c===c).slice(0,limit||99);mason.innerHTML=cur.map(tile).join('')}
 if(mason){
  const f=$('#filters');

@@ -54,12 +54,16 @@ if(frame){
  $('#next').href='maquette.html?m='+MAQUETTES[(i+1)%MAQUETTES.length].slug;
  /* taille de l'écran (px CSS) et épaisseur de la bordure de chaque appareil */
  const DEV={desktop:{w:1280,h:800,pad:0,top:38},tablet:{w:820,h:1180,pad:16,top:0},mobile:{w:390,h:844,pad:13,top:46}};
+ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
  const dev=$('#dev'),fit=$('#fit'),stage=$('#stage'),rot=$('#rot');
  let mode='desktop',land=false;
  function layout(){
-  const d=DEV[mode],sw=land&&mode!=='desktop'?d.h:d.w,sh=land&&mode!=='desktop'?d.w:d.h;
-  const top=mode==='mobile'&&land?0:d.top;const W=sw+d.pad*2,H=sh+d.pad*2+top;
   const cs=getComputedStyle(stage),aw=stage.clientWidth-parseFloat(cs.paddingLeft)*2,ah=stage.clientHeight-parseFloat(cs.paddingTop)*2;
+  const d=DEV[mode],o=land&&mode!=='desktop';
+  /* ordinateur : l'écran occupe toute la zone disponible (largeur 1100–1700 px) */
+  let sw=o?d.h:d.w,sh=o?d.w:d.h;
+  if(mode==='desktop'){sw=clamp(aw,1100,1700);sh=Math.max(560,Math.round((ah-d.top)*Math.max(1,sw/aw)))}
+  const top=mode==='mobile'&&land?0:d.top;const W=sw+d.pad*2,H=sh+d.pad*2+top;
   const s=Math.min(1,aw/W,ah/H);
   dev.style.width=W+'px';dev.style.height=H+'px';dev.style.transform=`scale(${s})`;
   fit.style.width=W*s+'px';fit.style.height=H*s+'px';

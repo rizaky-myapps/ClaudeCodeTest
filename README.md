@@ -21,3 +21,6 @@ Adresse : `https://<compte>.github.io/<dépôt>/`. Tous les chemins sont relatif
 
 ## À compléter avant mise en production
 Mentions légales et CGV contiennent des champs `[à compléter]` (SIRET, adresse, médiateur…). E-mail de contact à remplacer (`contact@my-apps.fr`).
+
+## Crédits photos
+Les photos des maquettes (`maquettes/*/img/`) proviennent d'[Unsplash](https://unsplash.com), utilisables gratuitement (licence Unsplash, attribution non obligatoire). Elles sont enregistrées dans le dépôt : aucun lien externe.
