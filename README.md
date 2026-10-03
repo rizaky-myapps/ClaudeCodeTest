@@ -7,7 +7,7 @@ Site statique (HTML/CSS/JS, aucune dépendance) de l'agence My-Apps.
 - `chez-marthe` : carte filtrable, réservation avec créneaux, gestion des réservations
 - `helene-voss` : galeries, visionneuse plein écran, estimateur de devis, demande de contact
 - `nord-athletique` : abonnements, inscription, planning avec places limitées, essai gratuit
-- `maison-verdure` : catalogue, recherche, fiches produit, panier, code promo `VERDURE10`, commande
+- `oyat-mousse` : catalogue, recherche, fiches produit, panier, code promo `OYAT10`, commande
 
 **Visionneuse** (`maquette.html`) : l'ordinateur, la tablette (pivotable) et le téléphone s'affichent dans un cadre d'appareil ; le site s'y affiche à la vraie taille d'écran, donc en vrai responsive.
 

@@ -21,8 +21,8 @@ const P=[
 const find=id=>P.find(x=>x.id===id);
 const img=(x,c='')=>`<img src="img/${x.id}.jpg" alt="${x.n}" loading="lazy" class="${c}">`;
 /* ---------- panier ---------- */
-const cart=()=>ld('verdure_cart',[]);
-function setCart(c){sv('verdure_cart',c);badge()}
+const cart=()=>ld('oyat_cart',[]);
+function setCart(c){sv('oyat_cart',c);badge()}
 let lastN=null;function badge(){const n=cart().reduce((a,x)=>a+x.q,0);$$('.cart i').forEach(e=>{e.textContent=n;if(lastN!==null&&n!==lastN){e.classList.remove('bump');void e.offsetWidth;e.classList.add('bump')}});lastN=n}
 function toast(m){let t=$('#toast');if(!t){t=document.createElement('div');t.id='toast';document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t.h);t.h=setTimeout(()=>t.classList.remove('on'),2000)}
 function add(id,q=1){const x=find(id),c=cart(),l=c.find(i=>i.id===id),have=l?l.q:0;
@@ -30,7 +30,7 @@ function add(id,q=1){const x=find(id),c=cart(),l=c.find(i=>i.id===id),have=l?l.q
  l?l.q+=q:c.push({id,q});setCart(c);toast(`${x.n} ajouté au panier`);return true}
 badge();
 const tt=(c)=>c.reduce((a,i)=>a+find(i.id).p*i.q,0);
-const promo=()=>ld('verdure_promo',null);
+const promo=()=>ld('oyat_promo',null);
 function totals(){const c=cart(),sub=tt(c),pr=promo(),rem=pr?Math.round(sub*pr.pct)/100:0,after=sub-rem,ship=!c.length?0:after>=50?0:4.9;return{c,sub,rem,ship,total:after+ship,after}}
 /* ---------- boutique ---------- */
 const grid=$('#grid');
@@ -57,7 +57,7 @@ const pv=$('#prod');
 if(pv){
  const x=find(new URLSearchParams(location.search).get('id'));
  if(!x){pv.innerHTML='<div class="empty">Produit introuvable. <a href="boutique.html" style="text-decoration:underline">Retour à la boutique</a></div>'}
- else{document.title=x.n+' – Maison Verdure';let q=1;
+ else{document.title=x.n+' – Oyat & Mousse';let q=1;
   const draw=()=>{const l=cart().find(i=>i.id===x.id),have=l?l.q:0,left=x.st-have;
   pv.innerHTML=`<div class="crumbs"><a href="index.html">Accueil</a> / <a href="boutique.html">Boutique</a> / <a href="boutique.html?c=${encodeURIComponent(x.c)}">${x.c}</a> / ${x.n}</div>
   <div class="prod"><div class="im">${img(x)}</div><div><small style="color:var(--c);font-weight:700;letter-spacing:.08em;text-transform:uppercase">${x.c}</small><h1>${x.n}</h1><div class="pr">${eur(x.p)}</div><p>${x.d}</p>
@@ -77,8 +77,8 @@ function summary(el,withCta){
  ${t.c.length&&left>0?`<div class="ship"><i style="width:${Math.min(100,t.after/50*100)}%"></i></div><p class="hint">Plus que ${eur(left)} pour la livraison offerte</p>`:''}
  <div class="row t"><span>Total</span><span>${eur(t.total)}</span></div>
  ${withCta?`<div class="promo"><input id="code" placeholder="Code promo" aria-label="Code promo" value="${promo()?promo().code:''}"><button class="btn o" id="apply" style="padding:10px 18px">OK</button></div><p class="hint" id="pm"></p><a class="btn g" style="display:block;margin-top:16px;${t.c.length?'':'pointer-events:none;opacity:.4'}" href="commande.html">Passer la commande</a>`:''}`;
- const a=$('#apply',el);if(a)a.onclick=()=>{const v=$('#code',el).value.trim().toUpperCase(),pm=$('#pm',el);if(!v){sv('verdure_promo',null);summary(el,withCta);return}
-  if(v==='VERDURE10'){sv('verdure_promo',{code:v,pct:10});summary(el,withCta);$('#pm',el).textContent='Code appliqué : −10 %.';$('#pm',el).className='hint ok'}else{pm.textContent='Code invalide. Essayez VERDURE10.';pm.className='hint no'}};
+ const a=$('#apply',el);if(a)a.onclick=()=>{const v=$('#code',el).value.trim().toUpperCase(),pm=$('#pm',el);if(!v){sv('oyat_promo',null);summary(el,withCta);return}
+  if(v==='OYAT10'){sv('oyat_promo',{code:v,pct:10});summary(el,withCta);$('#pm',el).textContent='Code appliqué : −10 %.';$('#pm',el).className='hint ok'}else{pm.textContent='Code invalide. Essayez OYAT10.';pm.className='hint no'}};
 }
 const cl=$('#lines');
 if(cl){
@@ -104,7 +104,7 @@ if(co){
   if(!ok){const first=$('.err:not(:empty)');first&&first.scrollIntoView({block:'center',behavior:'smooth'});return}
   const t=totals();if(!t.c.length)return;
   const o={ref:'MV-'+Date.now().toString(36).toUpperCase().slice(-6),date:new Date().toLocaleDateString('fr-FR'),total:t.total,mode:co.pay.value,items:t.c.map(i=>({n:find(i.id).n,q:i.q,p:find(i.id).p})),nom:co.prenom.value+' '+co.nom.value,adr:`${co.adr.value}, ${co.cp.value} ${co.ville.value}`};
-  const all=ld('verdure_orders',[]);all.unshift(o);sv('verdure_orders',all);setCart([]);sv('verdure_promo',null);
+  const all=ld('oyat_orders',[]);all.unshift(o);sv('oyat_orders',all);setCart([]);sv('oyat_promo',null);
   co.hidden=true;$('#sum').closest('aside').hidden=true;
   $('#done').innerHTML=`<div class="ok-box"><h2>Merci ${co.prenom.value} !</h2><p>Votre commande est enregistrée.</p><p class="ref">${o.ref}</p><p style="margin:14px 0;color:var(--mut)">${o.items.map(i=>i.q+' × '+i.n).join('<br>')}<br><br>Total : <b>${eur(o.total)}</b> · ${o.mode==='cb'?'Carte bancaire':o.mode==='paypal'?'PayPal':'Virement'}<br>Livraison à : ${o.adr}</p><p class="hint">Démonstration : aucun paiement n'est effectué et aucun e-mail n'est envoyé.</p><p style="margin-top:20px"><a class="btn g" href="boutique.html">Continuer mes achats</a></p></div>`;scrollTo({top:0,behavior:'smooth'})};
 }

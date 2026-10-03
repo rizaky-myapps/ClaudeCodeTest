@@ -2,7 +2,7 @@ const MAQUETTES=[
  {slug:'chez-marthe',nom:'Chez Marthe',cat:'Restaurant',desc:'Bistrot lyonnais : carte filtrable, réservation en ligne avec créneaux et gestion de vos réservations.',tags:['Réservation','Carte','Horaires en direct']},
  {slug:'helene-voss',nom:'Hélène Voss',cat:'Photographe',desc:'Portfolio avec galeries filtrables et visionneuse plein écran, estimateur de devis et formulaire de contact.',tags:['Galerie','Lightbox','Devis']},
  {slug:'nord-athletique',nom:'Nord Athlétique',cat:'Salle de sport',desc:'Abonnements, planning des cours avec places limitées, réservation de séance et inscription.',tags:['Planning','Réservation','Inscription']},
- {slug:'maison-verdure',nom:'Maison Verdure',cat:'Boutique en ligne',desc:'Catalogue, recherche, fiches produit, panier, code promo et tunnel de commande complet.',tags:['Panier','Fiches produit','Commande']}
+ {slug:'oyat-mousse',nom:'Oyat & Mousse',cat:'Boutique en ligne',desc:'Catalogue, recherche, fiches produit, panier, code promo et tunnel de commande complet.',tags:['Panier','Fiches produit','Commande']}
 ];
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const root=document.documentElement;
@@ -53,7 +53,7 @@ if(frame){
  $('#full').href=frame.src;
  $('#next').href='maquette.html?m='+MAQUETTES[(i+1)%MAQUETTES.length].slug;
  /* taille de l'écran (px CSS) et épaisseur de la bordure de chaque appareil */
- const DEV={desktop:{w:1280,h:800,pad:0,top:38},tablet:{w:820,h:1180,pad:16,top:0},mobile:{w:390,h:844,pad:13,top:46}};
+ const DEV={desktop:{w:1280,h:800,pad:0,top:38},tablet:{w:820,h:1180,pad:16,top:0},mobile:{w:390,h:844,pad:13,top:0}};
  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
  const dev=$('#dev'),fit=$('#fit'),stage=$('#stage'),rot=$('#rot');
  let mode='desktop',land=false;
@@ -70,6 +70,15 @@ if(frame){
   dev.dataset.m=mode;dev.dataset.o=land?'l':'p';
   rot.classList.toggle('show',mode!=='desktop');rot.classList.toggle('on',land);
  }
+ /* la barre d'état prend la couleur du haut du site affiché */
+ frame.addEventListener('load',()=>{
+  try{
+   const d=frame.contentDocument,w=frame.contentWindow,pick=el=>{if(!el)return null;const m=w.getComputedStyle(el).backgroundColor.match(/[\d.]+/g);return m&&(m.length<4||+m[3]>=.95)?m.slice(0,3).map(Number):null};
+   const rgb=pick(d.querySelector('.top'))||pick(d.querySelector('header'))||pick(d.body)||[255,255,255];
+   const lum=(.299*rgb[0]+.587*rgb[1]+.114*rgb[2])/255;
+   dev.style.setProperty('--st-bg',`rgb(${rgb.join(',')})`);dev.style.setProperty('--st-fg',lum>.55?'#111':'#fff');
+  }catch(e){}
+ });
  $('#devs').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('button',e.currentTarget).forEach(x=>x.classList.remove('on'));b.classList.add('on');mode=b.dataset.m;land=false;layout()};
  rot.onclick=()=>{land=!land;layout()};
  addEventListener('resize',layout);
