@@ -12,7 +12,7 @@ const MAX=S.max;
 function paint(){const o=CL.online;const pn=$('#pn');if(pn){pn.textContent=o}const pb=$('#pb');if(pb)pb.style.width=(o/MAX*100)+'%';const pg=$('#ping');if(pg)pg.textContent=S.maintenance?'—':(18+Math.floor(Math.random()*14))+' ms';const st=$('#state');if(st)st.innerHTML=S.maintenance?'<i class="dot mt"></i>Maintenance':'<i class="dot"></i>Serveur en ligne';const mo=$('#motd');if(mo)mo.innerHTML=CL.mc(S.motd)}
 function plist(){const el=$('#plist');if(!el)return;el.innerHTML=S.maintenance?'<p style="color:var(--mut)">Le serveur est en maintenance.</p>':CL.onlineList(12).map(n=>`<a class="pl" href="joueur.html?n=${encodeURIComponent(n)}">${CL.sk(n)}${esc(n)}</a>`).join('')}
 if($('#pn')){CL.tick();paint();plist();setInterval(()=>{CL.tick();paint();plist()},3500)}
-const cp=$('#copy');if(cp)cp.onclick=async()=>{try{await navigator.clipboard.writeText('play.cendrelune.example')}catch(e){}toast('Adresse copiée !')};
+const cp=$('#copy');if(cp)cp.onclick=()=>{try{navigator.clipboard.writeText('play.cendrelune.example').catch(()=>{})}catch(e){}toast('Adresse copiée !')};
 /* ---------- braises (accueil) ---------- */
 const cv=$('#embers');
 if(cv&&!matchMedia('(prefers-reduced-motion:reduce)').matches){const x=cv.getContext('2d');let W,H,P=[];const rs=()=>{W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight};rs();addEventListener('resize',rs);
