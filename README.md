@@ -17,7 +17,7 @@ Site statique (HTML/CSS/JS, aucune dépendance) de l'agence My-Apps.
 - `comptoir-des-curieux` : forum (catégories, sujets, réponses, citations, membres)
 - `pilotis-admin` : panneau d'administration (graphiques, utilisateurs, paramètres, journal)
 - `tribord-gestion` : comptabilité (factures avec TVA, clients, salariés, bulletins de paie)
-- `cendrelune-serveur` : serveur de jeu (statut en direct, classement, boutique, règlement)
+- `cendrelune-serveur` : serveur de jeu complet (comptes, liaison Discord simulée, carte interactive, clans, événements, boutique, vote, panneau d'administration)
 
 Les données des maquettes sont stockées dans le navigateur (localStorage) : rien n'est envoyé.
 

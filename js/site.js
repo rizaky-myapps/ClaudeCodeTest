@@ -8,7 +8,7 @@ const MAQUETTES=[
  {slug:'comptoir-des-curieux',nom:'Le Comptoir des Curieux',cat:'Forum',desc:'Forum de discussion : catégories, sujets, réponses, citations, « j\'aime » et profils de membres.',tags:['Sujets','Réponses','Membres']},
  {slug:'pilotis-admin',nom:'Pilotis Admin',cat:'Administration',desc:'Panneau d\'administration : tableau de bord avec graphiques, gestion des utilisateurs, paramètres et journal.',tags:['Graphiques','Utilisateurs','Export CSV']},
  {slug:'tribord-gestion',nom:'Tribord Gestion',cat:'Comptabilité & paie',desc:'Factures avec TVA, clients, salariés et bulletins de paie imprimables.',tags:['Factures','Paie','Export']},
- {slug:'cendrelune-serveur',nom:'Cendrelune',cat:'Jeu vidéo',desc:'Site de serveur de jeu : statut en direct, classement des joueurs, boutique de grades et règlement.',tags:['Statut en direct','Classement','Boutique']}
+ {slug:'cendrelune-serveur',nom:'Cendrelune',cat:'Jeu vidéo',desc:'Serveur de jeu complet : comptes avec liaison Discord, carte interactive, clans, événements, boutique, vote et panneau d\'administration (console, sanctions, tickets).',tags:['Liaison Discord','Panneau admin','Carte en direct']}
 ];
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const root=document.documentElement;
