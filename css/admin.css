@@ -11,7 +11,7 @@
 .bar2{display:flex;align-items:center;gap:14px;padding:14px clamp(16px,3vw,40px);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);position:sticky;top:0;z-index:40}
 .bar2 h1{font-size:1.3rem;margin:0;letter-spacing:-.025em}.bar2 .sp{flex:1}
 .ibtn{display:none}
-.ct{padding:clamp(16px,3vw,40px);flex:1}
+.ct{padding:clamp(16px,3vw,40px);flex:1;width:100%;max-width:1440px;margin-inline:auto}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:16px;margin-bottom:20px}
 .kpi{border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;background:var(--card)}
 .kpi small{display:block;color:var(--mut);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600}.kpi b{display:block;font-size:2.1rem;letter-spacing:-.04em;margin-top:6px;line-height:1.1}.kpi span{color:var(--mut);font-size:.84rem}

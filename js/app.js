@@ -74,8 +74,8 @@ function seed(){
 seed();
 
 /* ---------- réglages ---------- */
-const SET0={agency:{name:'My-Apps',email:'contact@my-apps.fr',prefix:'MA'},discord:{enabled:false,webhook:'',botName:'My-Apps · Tickets',avatar:'',mention:'',events:{ticket_open:true,ticket_reply:true,ticket_status:true,ticket_close:true,account_create:true,account_delete:true,service_change:false}}};
-const settings=()=>{const s=ld('settings',{});return {agency:{...SET0.agency,...s.agency},discord:{...SET0.discord,...s.discord,events:{...SET0.discord.events,...(s.discord||{}).events}}}};
+const SET0={agency:{name:'My-Apps',email:'contact@my-apps.fr',prefix:'MA'},discord:{enabled:false,webhook:'',hooks:{},botName:'My-Apps · Tickets',avatar:'',mention:'',events:{ticket_open:true,ticket_reply:true,ticket_status:true,ticket_close:true,account_create:true,account_delete:true,service_change:false}}};
+const settings=()=>{const s=ld('settings',{});return {agency:{...SET0.agency,...s.agency},discord:{...SET0.discord,...s.discord,events:{...SET0.discord.events,...(s.discord||{}).events},hooks:{...((s.discord||{}).hooks||{})}}}};
 
 /* ---------- accès ---------- */
 const users=()=>ld('users',[]);
@@ -95,7 +95,7 @@ const logs=()=>ld('logs',[]);
 const webhookOk=u=>/^https:\/\/(?:(?:canary|ptb)\.)?discord(?:app)?\.com\/api\/webhooks\/\d+\/[\w-]+$/.test(u||'');
 const EVT={ticket_open:['Nouveau ticket',0x2B59FF],ticket_reply:['Nouveau message',0x7A97FF],ticket_status:['Statut modifié',0xC97A06],ticket_close:['Ticket fermé',0x63636B],account_create:['Compte créé',0x14935B],account_delete:['Compte supprimé',0xD6332F],service_change:['Service modifié',0x7A97FF]};
 async function notify(evt,e){
- const d=settings().discord;if(!d.events[evt])return;
+ const d=settings().discord;if(!d.events[evt])return;d.hooks=d.hooks||{};
  const meta=EVT[evt]||[evt,0x2B59FF];
  const base=location.href.replace(/[^/]*([?#].*)?$/,'');
  const embed={title:`${meta[0]} · ${e.title}`,description:e.desc||'',color:meta[1],fields:(e.fields||[]).map(f=>({name:f[0],value:String(f[1]||'—').slice(0,300),inline:f[2]!==false})),timestamp:new Date().toISOString(),footer:{text:settings().agency.name+' · démonstration'}};
@@ -103,10 +103,11 @@ async function notify(evt,e){
  const content=evt==='ticket_open'&&d.mention?(/^\d+$/.test(d.mention)?`<@&${d.mention}>`:d.mention):undefined;
  const body={username:d.botName||'My-Apps',embeds:[embed]};if(d.avatar)body.avatar_url=d.avatar;if(content)body.content=content;
  const rec={id:uid(),t:Date.now(),evt,label:meta[0],title:e.title,status:'simulated',info:'Webhook non configuré : notification simulée'};
- if(d.enabled&&webhookOk(d.webhook)){
-  try{const r=await fetch(d.webhook,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});rec.status=r.ok?'sent':'failed';rec.info=r.ok?'Envoyée (HTTP '+r.status+')':'Refusée par Discord (HTTP '+r.status+')'}
+ const own=d.hooks[evt],url=own||d.webhook;rec.hook=own?'spécifique':'par défaut';
+ if(d.enabled&&webhookOk(url)){
+  try{const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});rec.status=r.ok?'sent':'failed';rec.info=(own?'Webhook spécifique · ':'Webhook par défaut · ')+(r.ok?'envoyée (HTTP '+r.status+')':'refusée par Discord (HTTP '+r.status+')')}
   catch(err){rec.status='failed';rec.info='Réseau : '+(err.message||'erreur')}
- }else if(d.enabled)rec.info='URL du webhook invalide : notification simulée';
+ }else if(d.enabled)rec.info=url?'URL du webhook invalide : notification simulée':'Aucun webhook défini pour cet événement : notification simulée';
  const o=ld('outbox',[]);o.unshift(rec);sv('outbox',o.slice(0,60));
  log('discord.envoi',`${meta[0]} · ${e.title} · ${rec.status==='sent'?'envoyée':rec.status==='failed'?'échec ('+rec.info+')':'simulée'}`,{actor:'Système',uid:null});
  return rec;

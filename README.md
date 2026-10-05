@@ -13,7 +13,7 @@ Site statique (HTML/CSS/JS, aucune dépendance) de l'agence My-Apps.
 - `admin-journal` : journal de toutes les actions (comptes, tickets, services, Discord, réglages), filtres, export CSV, purge tracée
 - `admin-parametres` : webhook Discord (URL, nom et avatar du « bot », mention, événements notifiés, message de test, historique des envois), informations de l'agence, export et réinitialisation des données
 
-**Notifications Discord** : un webhook (Discord → Paramètres du salon → Intégrations → Webhooks) reçoit un message pour chaque événement coché (nouveau ticket, message, changement de statut, fermeture, création / suppression de compte, modification d'un service). Sans webhook valide, l'envoi est simulé et tracé dans le journal.
+**Notifications Discord** : un webhook (Discord → Paramètres du salon → Intégrations → Webhooks) reçoit un message pour chaque événement coché (nouveau ticket, message, changement de statut, fermeture, création / suppression de compte, modification d'un service). Un webhook par défaut gère tous les événements ; un webhook spécifique peut être défini par événement. Sans webhook valide, l’envoi est simulé et tracé dans le journal.
 
 Toutes les données de l'agence (comptes, tickets, services, journal) sont stockées dans le navigateur (`localStorage`, préfixe `ma_`) : c'est une démonstration sans serveur. Un vrai déploiement nécessiterait une base de données et une authentification côté serveur.
 
