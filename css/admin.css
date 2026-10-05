@@ -47,3 +47,25 @@
  .ibtn{display:grid}
  .svc{grid-template-columns:auto 1fr}.svc .acts{grid-column:1/-1;justify-content:flex-start}
 }
+
+/* ===== administration : DA Brutal ===== */
+.sd{background:var(--bg2);border-right:2px solid var(--bd)}
+.sd nav a{border:2px solid transparent;border-radius:6px;font-family:var(--serif);font-weight:700;color:var(--ink)}
+.sd nav a:hover{background:var(--b);color:#0D0D0D;border-color:var(--bd)}
+.sd nav a.cur{background:var(--ink);color:var(--bg);border-color:var(--bd);box-shadow:3px 3px 0 var(--a)}
+.sd nav a .bd{background:var(--a);color:var(--aink);border:2px solid var(--bd);border-radius:4px;font-family:var(--mono)}
+.sd .me{border-top:2px solid var(--bd)}.sd .me a:hover{color:var(--a)}
+.bar2{background:var(--bg);backdrop-filter:none;border-bottom:2px solid var(--bd)}
+.kpi b{color:var(--a)}
+.svc.off{opacity:.5}
+.sw span{background:var(--bg2);border:2px solid var(--bd);border-radius:6px}.sw span::after{background:var(--ink);border-radius:3px;box-shadow:none;top:2px;left:2px;width:15px;height:15px}
+.sw input:checked+span{background:var(--b)}.sw input:checked+span::after{transform:translateX(19px)}
+.sw{height:25px}
+.stack{border:2px solid var(--bd);border-radius:0;height:18px;background:var(--bg2)}
+.pg button{border:2px solid var(--bd);border-radius:5px;background:var(--card);color:var(--ink)}.pg button.on{background:var(--a);color:var(--aink)}
+.svc .ord button{border:2px solid var(--bd);border-radius:4px}
+.pri{font-family:var(--mono);border:2px solid var(--bd);border-radius:4px;background:var(--card);color:var(--ink)}.pri.high{background:var(--bad);color:#fff}
+.note-box{background:color-mix(in srgb,var(--b) 25%,var(--card));border-top:2px solid var(--bd)}
+.code{border:2px solid var(--bd);border-radius:4px;background:var(--b);color:#0D0D0D}
+.li{border-bottom:2px dashed var(--line)}
+.lock h1{font-family:var(--serif)}
