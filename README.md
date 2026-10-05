@@ -46,5 +46,5 @@ Mentions légales et CGV contiennent des champs `[à compléter]` (SIRET, adress
 Les photos des maquettes (`maquettes/*/img/`) proviennent d'[Unsplash](https://unsplash.com), utilisables gratuitement (licence Unsplash, attribution non obligatoire). Elles sont enregistrées dans le dépôt : aucun lien externe.
 
 ## Identité visuelle (My-Apps)
-Direction artistique « Plein cadre » : noir, blanc et un seul bleu (`#2B59FF`, `#7A97FF` en sombre), mise en page pleine largeur, police *Inter*, filets fins, peu d'ombres.
+Direction artistique « Atelier » : papier chaud (`#F7F2EA`), terracotta (`#D8512B`), titres en serif *Fraunces* (italique pour les mots clés), texte en *Inter*, formes très arrondies ; mode sombre brun chaud.
 Logo : un écran d'ordinateur et un téléphone qui se chevauchent, suivis du nom en traits arrondis. Fichiers dans `img/` : `logo.svg` (fond clair), `logo-dark.svg` (fond sombre), `logo-mark.svg`, `favicon.svg`, `logo.png`, `favicon-512.png`, `apple-touch-icon.png`.
