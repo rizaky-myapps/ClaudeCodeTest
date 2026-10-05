@@ -1,4 +1,4 @@
-.viewer{--bezel:#1b1b1d;--bezel-line:rgba(0,0,0,.25);--island:#000;--pill:rgba(0,0,0,.55);display:flex;flex-direction:column;height:100vh;overflow:hidden}
+.viewer{--bezel:#1b1b1d;--bezel-line:rgba(0,0,0,.25);--island:#000;--pill:rgba(0,0,0,.55);display:flex;flex-direction:column;height:calc(100vh / var(--z,1));overflow:hidden}
 .vbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
 .vbar .btn{padding:8px 14px;font-size:.88rem}
 .devs{display:flex;gap:4px;background:var(--bg2);padding:4px;border-radius:10px}
