@@ -10,6 +10,8 @@ const MAQUETTES=[
  {slug:'tribord-gestion',nom:'Tribord Gestion',cat:'Comptabilité & paie',desc:'Factures avec TVA, clients, salariés et bulletins de paie imprimables.',tags:['Factures','Paie','Export']},
  {slug:'cendrelune-serveur',nom:'Cendrelune',cat:'Jeu vidéo',desc:'Serveur de jeu complet : comptes avec liaison Discord, carte interactive, clans, événements, boutique, vote et panneau d\'administration (console, sanctions, tickets).',tags:['Liaison Discord','Panneau admin','Carte en direct']}
 ];
+
+/* My-Apps — interface commune : thème, menu, compte, services, réalisations, visionneuse */
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const root=document.documentElement;
 /* thème : suit le réglage du système tant que le visiteur n'a pas choisi lui-même */
@@ -17,19 +19,29 @@ const mq=matchMedia('(prefers-color-scheme:dark)');
 const userTheme=()=>{try{return localStorage.getItem('theme')}catch(e){return null}};
 if(!root.dataset.theme)root.dataset.theme=userTheme()||(mq.matches?'dark':'light');
 (mq.addEventListener?mq.addEventListener.bind(mq,'change'):mq.addListener.bind(mq))(e=>{if(!userTheme())root.dataset.theme=e.matches?'dark':'light'});
-$$('.theme').forEach(b=>b.onclick=()=>{
- const t=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=t;
- try{localStorage.setItem('theme',t)}catch(e){}
-});
+$$('.theme').forEach(b=>b.onclick=()=>{const t=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}});
 const burger=$('.burger');
 if(burger)burger.onclick=()=>{const o=$('.menu').classList.toggle('open');burger.setAttribute('aria-expanded',o)};
+/* compte dans l'en-tête */
+(()=>{const el=$('#acct');if(!el||!window.MA)return;const m=MA.me();
+ if(!m){el.innerHTML='<a class="btn sm" href="connexion.html">Connexion</a>';return}
+ el.innerHTML=`<button class="who" aria-haspopup="true" aria-expanded="false"><span class="av">${MA.esc(m.name[0]||'?').toUpperCase()}</span><span>${MA.esc(m.name.split(' ')[0])}</span></button><div class="dd" role="menu"><a href="espace.html">Mes demandes</a><a href="commande.html">Commander un site</a>${m.role==='admin'?'<a href="admin.html">Administration</a>':''}<hr><button id="out">Se déconnecter</button></div>`;
+ const b=$('.who',el),d=$('.dd',el);b.onclick=e=>{e.stopPropagation();const o=d.classList.toggle('on');b.setAttribute('aria-expanded',o)};
+ document.addEventListener('click',()=>d.classList.remove('on'));
+ $('#out',el).onclick=()=>{MA.logout();location.href='index.html'};
+})();
+/* services (gérés depuis l'administration) */
+const svcCard=(s,i)=>`<div class="card up ${s.featured?'hl':''}" style="--i:${i}">${s.featured?'<span class="tagline">Le plus demandé</span>':s.cat?`<span class="tagline" style="background:var(--bg2);color:var(--mut)">${MA.esc(s.cat)}</span>`:''}<h3>${MA.esc(s.name)}</h3><div class="price">${+s.price?`${s.prefix?`<small class="pre">${MA.esc(s.prefix)}</small>`:''}${MA.eur(s.price)}<small> ${MA.esc(s.unit||'HT')}${s.period?' '+MA.esc(s.period):''}</small>`:'Sur devis'}</div><p>${MA.esc(s.desc)}</p><ul class="check">${(s.features||[]).map(f=>`<li>${MA.esc(f)}</li>`).join('')}</ul><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:auto"><a class="btn ${s.featured?'primary':''}" href="commande.html?s=${encodeURIComponent(s.id)}">Commander</a>${s.delay?`<small style="color:var(--mut)">Délai : ${MA.esc(s.delay)}</small>`:''}</div></div>`;
+const sg=$('#svc-grid');if(sg&&window.MA){const l=MA.services().filter(s=>s.active);sg.innerHTML=l.length?l.map(svcCard).join(''):'<p class="lead">Les services seront bientôt disponibles.</p>';sg.querySelectorAll('.card').forEach(c=>{c.style.display='flex';c.style.flexDirection='column'})}
+const hs=$('#home-svc');if(hs&&window.MA){const l=MA.services().filter(s=>s.active).slice(0,3);hs.innerHTML=l.map(svcCard).join('')}
+
 const card=m=>`<a class="work" href="maquette.html?m=${m.slug}">
  <div class="thumb"><iframe src="maquettes/${m.slug}/index.html" loading="lazy" tabindex="-1" title="Aperçu de ${m.nom}"></iframe></div>
  <div class="meta"><h3>${m.nom}</h3><span class="cat">${m.cat}</span></div>
  <p>${m.desc}</p><div class="tags">${m.tags.map(t=>`<span>${t}</span>`).join('')}</div></a>`;
 const fit=g=>$$('.thumb',g).forEach(t=>t.firstElementChild.style.transform=`scale(${t.clientWidth/1280})`);
 const home=$('#home-works');
-if(home){home.innerHTML=MAQUETTES.slice(0,2).map(card).join('');fit(home);addEventListener('resize',()=>fit(home))}
+if(home){home.innerHTML=MAQUETTES.slice(0,3).map(card).join('');fit(home);addEventListener('resize',()=>fit(home))}
 const grid=$('#works');
 if(grid){
  const f=$('#filters'),cats=['Toutes',...new Set(MAQUETTES.map(m=>m.cat))];
@@ -37,20 +49,6 @@ if(grid){
  f.innerHTML=cats.map((c,i)=>`<button class="${i?'':'on'}">${c}</button>`).join('');
  f.onclick=e=>{if(e.target.tagName!=='BUTTON')return;$$('button',f).forEach(b=>b.classList.remove('on'));e.target.classList.add('on');draw(e.target.textContent)};
  addEventListener('resize',()=>fit(grid));draw('Toutes');
-}
-/* formulaire de contact : validation + ouverture du client mail */
-const form=$('#contact-form');
-if(form){
- const rules={nom:v=>v.trim().length>1||'Indiquez votre nom.',email:v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)||'Adresse e-mail invalide.',message:v=>v.trim().length>=15||'Décrivez votre projet en quelques lignes (15 caractères min.).',rgpd:(v,el)=>el.checked||'Veuillez accepter le traitement de votre demande.'};
- form.onsubmit=e=>{
-  e.preventDefault();let ok=true;
-  for(const k in rules){const el=form.elements[k],r=rules[k](el.value,el),err=$('.err[data-for='+k+']',form);err.textContent=r===true?'':r;if(r!==true)ok=false}
-  if(!ok)return;
-  const d=new FormData(form);
-  const body=`${d.get('message')}\n\nType de projet : ${d.get('type')}\nBudget : ${d.get('budget')}\n\n${d.get('nom')} — ${d.get('email')}`;
-  $('#sent').hidden=false;form.hidden=true;
-  location.href='mailto:contact@my-apps.fr?subject='+encodeURIComponent('Projet web – '+d.get('nom'))+'&body='+encodeURIComponent(body);
- };
 }
 /* visionneuse : appareils (ordinateur, tablette, téléphone) */
 const frame=$('#frame');

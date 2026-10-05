@@ -1,7 +1,21 @@
 # My-Apps
 Site statique (HTML/CSS/JS, aucune dépendance) de l'agence My-Apps.
 
-**Agence** : `index`, `services`, `realisations`, `a-propos`, `contact`, `cgv`, `mentions-legales`, `confidentialite`, `maquette` (visionneuse ordinateur/tablette/mobile). Thème clair/sombre.
+**Agence** (pleine largeur, thème clair/sombre automatique) : `index`, `services` (alimentés par l'administration), `realisations`, `a-propos`, `contact`, `cgv`, `mentions-legales`, `confidentialite`, `maquette` (visionneuse ordinateur/tablette/mobile).
+
+**Espace client** : `connexion` (connexion + création de compte), `commande` (ticket de commande d'un site), `espace` (suivi des demandes, échanges, clôture, profil, suppression du compte).
+
+**Administration** (`admin*.html`, réservée aux administrateurs ; démo : `admin@my-apps.fr` / `myapps-admin`) :
+- `admin` : tableau de bord (tickets par statut, par jour, activité récente)
+- `admin-tickets` : traitement des tickets (réponse, réponses rapides, statut en attente / en cours / traité / fermé, priorité, notes internes, réouverture, suppression)
+- `admin-services` : gestion des services (nom, catégorie, prix, préfixe, périodicité, délai, description, points inclus, mise en avant, visibilité, ordre, suppression) — reflétés sur le site
+- `admin-comptes` : comptes clients (rôle, suppression)
+- `admin-journal` : journal de toutes les actions (comptes, tickets, services, Discord, réglages), filtres, export CSV, purge tracée
+- `admin-parametres` : webhook Discord (URL, nom et avatar du « bot », mention, événements notifiés, message de test, historique des envois), informations de l'agence, export et réinitialisation des données
+
+**Notifications Discord** : un webhook (Discord → Paramètres du salon → Intégrations → Webhooks) reçoit un message pour chaque événement coché (nouveau ticket, message, changement de statut, fermeture, création / suppression de compte, modification d'un service). Sans webhook valide, l'envoi est simulé et tracé dans le journal.
+
+Toutes les données de l'agence (comptes, tickets, services, journal) sont stockées dans le navigateur (`localStorage`, préfixe `ma_`) : c'est une démonstration sans serveur. Un vrai déploiement nécessiterait une base de données et une authentification côté serveur.
 
 **Maquettes** (sites complets et fonctionnels, dossiers `maquettes/<nom>/`) :
 - `le-tablier-bavard` : carte filtrable, réservation avec créneaux, gestion des réservations
@@ -32,5 +46,5 @@ Mentions légales et CGV contiennent des champs `[à compléter]` (SIRET, adress
 Les photos des maquettes (`maquettes/*/img/`) proviennent d'[Unsplash](https://unsplash.com), utilisables gratuitement (licence Unsplash, attribution non obligatoire). Elles sont enregistrées dans le dépôt : aucun lien externe.
 
 ## Identité visuelle (My-Apps)
-Direction artistique « Lagune » : une seule famille de teintes, bleu pétrole `#0B6E83` et turquoise `#3CC6DD`, fonds unis (clair `#FBFCFC` / sombre `#071418`), titres en *Bricolage Grotesque*, texte en *Inter*, gros arrondis et ombres douces.
-Logo : une grille d’applications, trois carrés cobalt et un rond jaune (l’application « à vous »). Fichiers dans `img/` : `logo.svg` (fond clair), `logo-dark.svg` (fond sombre), `logo-mark.svg`, `favicon.svg`, `logo.png`, `favicon-512.png`, `apple-touch-icon.png`.
+Direction artistique « Plein cadre » : noir, blanc et un seul bleu (`#2B59FF`, `#7A97FF` en sombre), mise en page pleine largeur, police *Inter*, filets fins, peu d'ombres.
+Logo : un écran d'ordinateur et un téléphone qui se chevauchent, suivis du nom en traits arrondis. Fichiers dans `img/` : `logo.svg` (fond clair), `logo-dark.svg` (fond sombre), `logo-mark.svg`, `favicon.svg`, `logo.png`, `favicon-512.png`, `apple-touch-icon.png`.
