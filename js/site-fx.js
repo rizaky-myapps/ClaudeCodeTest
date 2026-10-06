@@ -23,6 +23,13 @@
   w.className='wave';w.style.cssText=`width:${s}px;height:${s}px;left:${e.clientX-r.left-s/2}px;top:${e.clientY-r.top-s/2}px`;
   b.appendChild(w);setTimeout(()=>w.remove(),650);
  },{passive:true});
+ /* halo qui suit le curseur + légère inclinaison de l'image du héros */
+ if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!reduce)document.addEventListener('pointermove',e=>{
+  const t=e.target.closest&&e.target.closest('.card,.work,.panel,.kpi,.svc');
+  if(t){const r=t.getBoundingClientRect();t.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');t.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')}
+  const h=document.querySelector('.hero-pic');
+  if(h){const r=h.getBoundingClientRect(),inside=e.clientX>r.left&&e.clientX<r.right&&e.clientY>r.top&&e.clientY<r.bottom;h.style.transform=inside?`perspective(1000px) rotateY(${((e.clientX-r.left)/r.width-.5)*7}deg) rotateX(${-((e.clientY-r.top)/r.height-.5)*7}deg)`:''}
+ },{passive:true});
  /* apparition au défilement des blocs marqués .rv ; sans observateur, tout reste visible */
  const els=$$('.rv');
  if(!('IntersectionObserver' in window)||reduce){els.forEach(e=>e.classList.add('in'));return}

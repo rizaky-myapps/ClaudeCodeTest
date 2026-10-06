@@ -46,5 +46,5 @@ Mentions légales et CGV contiennent des champs `[à compléter]` (SIRET, adress
 Les photos des maquettes (`maquettes/*/img/`) proviennent d'[Unsplash](https://unsplash.com), utilisables gratuitement (licence Unsplash, attribution non obligatoire). Elles sont enregistrées dans le dépôt : aucun lien externe.
 
 ## Identité visuelle (My-Apps)
-Direction artistique « Brutal » : bordures noires épaisses, ombres décalées, violet `#6C4DFF` + jaune `#FFD84A`, titres *Space Grotesk*, étiquettes *Space Mono*, boutons qui s’enfoncent au clic, transitions de page en volet ; mode sombre bleu nuit.
+Direction artistique « Nocturne » : verre dépoli, dégradé émeraude → cyan → indigo (`#10B981` → `#06B6D4` → `#6366F1`), lueurs animées en arrière-plan, titres *Sora*, texte *Inter*, boutons pilule avec reflet, halo qui suit le curseur, apparition au défilement avec flou ; mode clair bleuté et mode sombre bleu ardoise.
 Logo : un écran d'ordinateur et un téléphone qui se chevauchent, suivis du nom en traits arrondis. Fichiers dans `img/` : `logo.svg` (fond clair), `logo-dark.svg` (fond sombre), `logo-mark.svg`, `favicon.svg`, `logo.png`, `favicon-512.png`, `apple-touch-icon.png`.

@@ -42,3 +42,6 @@
 .devs button.on{background:var(--ink);color:var(--bg);box-shadow:none}
 .vtitle{font-weight:700;letter-spacing:-.02em}
 @media(max-width:760px){.vbar{padding:8px 12px}.vtitle small{display:none}}
+
+.devs button.on{background:var(--g);color:#fff}
+:root[data-theme=dark] .devs button.on{color:#04221A}
