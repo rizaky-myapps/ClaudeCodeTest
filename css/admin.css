@@ -62,3 +62,6 @@
 .pri.high{background:color-mix(in srgb,var(--bad) 16%,transparent);color:var(--bad)}
 .note-box{background:color-mix(in srgb,var(--warn) 9%,transparent)}
 .code{background:var(--soft);color:var(--a);border:0}
+
+.sd nav a.cur,:root[data-theme=dark] .sd nav a.cur{color:var(--navy)}.sd nav a.cur .bd{background:var(--navy);color:#F6F4EF}
+.pg button.on{color:var(--navy)}.ct{max-width:1280px}
