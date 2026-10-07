@@ -46,5 +46,5 @@ Mentions légales et CGV contiennent des champs `[à compléter]` (SIRET, adress
 Les photos des maquettes (`maquettes/*/img/`) proviennent d'[Unsplash](https://unsplash.com), utilisables gratuitement (licence Unsplash, attribution non obligatoire). Elles sont enregistrées dans le dépôt : aucun lien externe.
 
 ## Identité visuelle (My-Apps)
-Direction artistique « Nocturne » : palette de 3 couleurs — bleu nuit `#14213D`, ambre `#FCA311`, crème `#F6F4EF` ; verre dépoli, lueurs animées, titres *Sora*, texte *Inter*, boutons pilule avec reflet, halo qui suit le curseur, apparition au défilement ; échelle compacte, mode sombre bleu nuit clair.
+Direction artistique « Nocturne » : couleurs simples — noir doux `#111418`, gris clair `#F7F8FA` et un seul bleu `#2F6BFF` (`#6C9BFF` en mode sombre) ; fond animé sur toute la page (points reliés qui dérivent et réagissent au curseur, canvas `#bg` dans `js/site-fx.js`), verre dépoli, titres *Sora*, texte *Inter*, boutons pilule.
 Logo : un écran d'ordinateur et un téléphone qui se chevauchent, suivis du nom en traits arrondis. Fichiers dans `img/` : `logo.svg` (fond clair), `logo-dark.svg` (fond sombre), `logo-mark.svg`, `favicon.svg`, `logo.png`, `favicon-512.png`, `apple-touch-icon.png`.

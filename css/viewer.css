@@ -47,3 +47,5 @@
 :root[data-theme=dark] .devs button.on{color:#04221A}
 
 .devs button.on,:root[data-theme=dark] .devs button.on{background:var(--g);color:var(--navy)}
+
+.devs button.on,:root[data-theme=dark] .devs button.on{background:var(--ink);color:var(--bg)}

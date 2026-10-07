@@ -23,6 +23,21 @@
   w.className='wave';w.style.cssText=`width:${s}px;height:${s}px;left:${e.clientX-r.left-s/2}px;top:${e.clientY-r.top-s/2}px`;
   b.appendChild(w);setTimeout(()=>w.remove(),650);
  },{passive:true});
+ /* fond animé : points reliés qui dérivent et réagissent au curseur */
+ if(!reduce){
+  const cv=document.createElement('canvas');cv.id='bg';document.body.prepend(cv);
+  const cx=cv.getContext('2d');let W,H,P=[],mx=-999,my=-999,col='#2F6BFF',ink='#111418',tick=0,run=true;
+  const init=()=>{const d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);const n=Math.min(110,Math.round(W*H/15000));P=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:1+Math.random()*1.6}))};
+  const colors=()=>{const s=getComputedStyle(document.documentElement);col=s.getPropertyValue('--a').trim()||col;ink=s.getPropertyValue('--ink').trim()||ink};
+  addEventListener('resize',init);addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY},{passive:true});document.addEventListener('visibilitychange',()=>{run=!document.hidden;if(run)loop()});
+  const loop=()=>{if(!run)return;if(tick++%90===0)colors();cx.clearRect(0,0,W,H);
+   for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;const dx=p.x-mx,dy=p.y-my,d=dx*dx+dy*dy;if(d<14000){const f=(1-d/14000)*.6;p.x+=dx*f*.03;p.y+=dy*f*.03}}
+   cx.fillStyle=ink;cx.globalAlpha=.3;for(const p of P){cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fill()}
+   cx.strokeStyle=col;cx.lineWidth=1;
+   for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],b=P[j],dx=a.x-b.x,dy=a.y-b.y,d=dx*dx+dy*dy;if(d<16900){cx.globalAlpha=(1-d/16900)*.38;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}
+   cx.globalAlpha=1;requestAnimationFrame(loop)};
+  colors();init();loop();
+ }
  /* halo qui suit le curseur + légère inclinaison de l'image du héros */
  if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!reduce)document.addEventListener('pointermove',e=>{
   const t=e.target.closest&&e.target.closest('.card,.work,.panel,.kpi,.svc');
