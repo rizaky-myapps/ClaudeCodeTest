@@ -388,3 +388,8 @@ em,.stats b,.num,.kpi b{background:none;-webkit-background-clip:border-box;backg
 #prog{background:var(--a)}
 section.alt{background:color-mix(in srgb,var(--bg2) 70%,transparent)}
 footer{background:color-mix(in srgb,var(--bg2) 80%,transparent)}
+
+select,select option,select optgroup{color:var(--ink)}
+select option{background:#FFFFFF;color:#111418}
+:root[data-theme=dark] select{color-scheme:dark}
+:root[data-theme=dark] select option{background:#2A2D35;color:#F4F5F7}
